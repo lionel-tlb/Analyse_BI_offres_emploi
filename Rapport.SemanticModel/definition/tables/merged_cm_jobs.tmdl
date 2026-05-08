@@ -1,0 +1,125 @@
+table merged_cm_jobs
+	lineageTag: cc8e0fff-0564-469f-ba1c-521497bab35b
+
+	measure count_regions = COUNT(merged_cm_jobs[region])
+		formatString: 0
+		lineageTag: fa2c6b52-864d-400e-a029-0e7380bc1fa4
+
+	column poste
+		dataType: string
+		lineageTag: a7b71a44-f084-495e-b088-4cea3e76af9c
+		summarizeBy: none
+		sourceColumn: poste
+
+		annotation SummarizationSetBy = Automatic
+
+	column localité
+		dataType: string
+		lineageTag: 24f70122-d7bd-488a-8fc6-b7bb351ba039
+		summarizeBy: none
+		sourceColumn: localité
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation
+		dataType: string
+		lineageTag: 7ce92ff4-1926-4d19-bc5a-19953b10fc71
+		summarizeBy: none
+		sourceColumn: organisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'date de publication'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 69bb36a2-618c-4b28-a71c-08ffc1827947
+		summarizeBy: none
+		sourceColumn: date de publication
+
+		variation Variation
+			isDefault
+			relationship: d694eb3c-63b4-4e09-a381-723a6a267157
+			defaultHierarchy: LocalDateTable_179d40f8-346b-420c-9177-36a8c941aa0b.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column études
+		dataType: string
+		lineageTag: b13b6141-ec92-427e-8afc-575b0fec6516
+		summarizeBy: none
+		sourceColumn: études
+
+		annotation SummarizationSetBy = Automatic
+
+	column expérience
+		dataType: string
+		lineageTag: cc1417de-5336-4fac-9921-0a7cc3e0a961
+		summarizeBy: none
+		sourceColumn: expérience
+
+		annotation SummarizationSetBy = Automatic
+
+	column compétence
+		dataType: string
+		lineageTag: 48014cfd-22aa-4632-885a-77b253713bbc
+		summarizeBy: none
+		sourceColumn: compétence
+
+		annotation SummarizationSetBy = Automatic
+
+	column contrat
+		dataType: string
+		lineageTag: ea0b168a-ae88-44f9-9ae5-f50faae82abe
+		summarizeBy: none
+		sourceColumn: contrat
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: dd4655c6-851c-46d2-ae32-eb3e21ead10a
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column salaire
+		dataType: string
+		lineageTag: 03950c3e-1e78-4527-9432-98b154f5c7af
+		summarizeBy: none
+		sourceColumn: salaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 4a4181ed-8be0-4ca4-9dc9-c01e35fc8288
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'lien offre'
+		dataType: string
+		lineageTag: d6bcec15-9d1e-4c3a-8935-f7d4bca76a4e
+		summarizeBy: none
+		sourceColumn: lien offre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition merged_cm_jobs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(CheminProjet & "\data\merged_cm_jobs.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"poste", type text}, {"localité", type text}, {"organisation", type text}, {"date de publication", type date}, {"études", type text}, {"expérience", type text}, {"compétence", type text}, {"contrat", type text}, {"region", type text}, {"salaire", type text}, {"source", type text}, {"lien offre", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

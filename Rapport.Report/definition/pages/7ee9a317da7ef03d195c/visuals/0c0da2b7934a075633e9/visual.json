@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "0c0da2b7934a075633e9",
+  "position": {
+    "x": 674.6508569978547,
+    "y": 240.00184548663177,
+    "z": 0,
+    "height": 434.64901151122291,
+    "width": 578.27216314101827,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "merged_cm_jobs.region",
+              "nativeQueryRef": "region",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "count_regions"
+                }
+              },
+              "queryRef": "merged_cm_jobs.count_regions",
+              "nativeQueryRef": "count_regions"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "merged_cm_jobs"
+                  }
+                },
+                "Property": "count_regions"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2eeb2e7c515e7a302531",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "merged_cm_jobs"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7d5c9ea0c650c615494d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "merged_cm_jobs"
+              }
+            },
+            "Property": "count_regions"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+relationship d694eb3c-63b4-4e09-a381-723a6a267157
+	joinOnDateBehavior: datePartOnly
+	fromColumn: merged_cm_jobs.'date de publication'
+	toColumn: LocalDateTable_179d40f8-346b-420c-9177-36a8c941aa0b.Date
+

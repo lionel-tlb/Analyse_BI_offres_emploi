@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "1b6f4bd202a68040fbc0",
+  "position": {
+    "x": 49.134236083877369,
+    "y": 109.60714203326491,
+    "z": 1,
+    "height": 610.39839442663038,
+    "width": 570.71304989734483,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "merged_cm_jobs.region",
+              "nativeQueryRef": "region"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "count_regions"
+                }
+              },
+              "queryRef": "merged_cm_jobs.count_regions",
+              "nativeQueryRef": "count_regions"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b499735d673924fd2925",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "merged_cm_jobs"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "90b7357918217d91f293",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "merged_cm_jobs"
+              }
+            },
+            "Property": "count_regions"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

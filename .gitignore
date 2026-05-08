@@ -1,0 +1,5 @@
+*.pbi
+*.user
+.USER.zip
+**/temp/
+**/Cache/

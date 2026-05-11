@@ -5,3 +5,28 @@ expression CheminProjet = "C:\Users\TLB\BI_WORK\ANALYSE_BI_OFFRES_EMPLOI" meta [
 
 	annotation PBI_ResultType = Text
 
+expression fn_normalize_job_1 = ```
+		(current_value as any, container_values as list, output_value as text, and_condition as logical) =>
+		let
+		    value = if current_value = null then "" else Text.From(current_value),
+		
+		    TransformFunction = List.Transform(
+		                        container_values,
+		                        each Text.Contains(value, _, Comparer.OrdinalIgnoreCase)
+		                    ),
+		                    
+		    Check = if and_condition then
+		                List.AllTrue(TransformFunction)
+		            else
+		                List.AnyTrue(TransformFunction),
+		
+		    Result = if Check then output_value else value
+		in
+		    Result
+		```
+	lineageTag: e79b78fd-5c63-409f-b9fa-c7c88625c652
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

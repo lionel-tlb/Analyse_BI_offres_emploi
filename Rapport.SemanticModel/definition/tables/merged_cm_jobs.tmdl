@@ -5,6 +5,10 @@ table merged_cm_jobs
 		formatString: 0
 		lineageTag: fa2c6b52-864d-400e-a029-0e7380bc1fa4
 
+	measure count_jobs = COUNT(merged_cm_jobs[poste])
+		formatString: 0
+		lineageTag: 9fcdaebf-92e8-4f1c-9f32-4dc6493d7bb1
+
 	column poste
 		dataType: string
 		lineageTag: a7b71a44-f084-495e-b088-4cea3e76af9c
@@ -111,13 +115,56 @@ table merged_cm_jobs
 
 	partition merged_cm_jobs = m
 		mode: import
-		source =
+		source = ```
 				let
 				    Source = Csv.Document(File.Contents(CheminProjet & "\data\merged_cm_jobs.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"poste", type text}, {"localité", type text}, {"organisation", type text}, {"date de publication", type date}, {"études", type text}, {"expérience", type text}, {"compétence", type text}, {"contrat", type text}, {"region", type text}, {"salaire", type text}, {"source", type text}, {"lien offre", type text}})
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"poste", type text}, {"localité", type text}, {"organisation", type text}, {"date de publication", type date}, {"études", type text}, {"expérience", type text}, {"compétence", type text}, {"contrat", type text}, {"region", type text}, {"salaire", type text}, {"source", type text}, {"lien offre", type text}}),
+				    #"Fractionner la colonne par délimiteur" = Table.ExpandListColumn(Table.TransformColumns(#"Type modifié", {{"region", Splitter.SplitTextByDelimiter("&", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "region"),
+				    #"Type modifié1" = Table.TransformColumnTypes(#"Fractionner la colonne par délimiteur",{{"region", type text}}),
+				    #"Valeur remplacée" = Table.ReplaceValue(#"Type modifié1","Emploi-international","International",Replacer.ReplaceText,{"region"}),
+				    #"Espaces supprimés" = Table.TransformColumns(#"Valeur remplacée",{{"region", Text.Trim, type text}}),
+				    #"Valeur remplacée1" = Table.ReplaceValue(#"Espaces supprimés","Adamoua","Adamaoua",Replacer.ReplaceText,{"region"}),
+				    #"Valeur remplacée2" = Table.ReplaceValue(#"Valeur remplacée1","...","Tout_le_cameroun",Replacer.ReplaceText,{"region"}),
+				    #"Espaces supprimés1" = Table.TransformColumns(#"Valeur remplacée2",{{"contrat", Text.Trim, type text}, {"poste", Text.Trim, type text}, {"localité", Text.Trim, type text}, {"organisation", Text.Trim, type text}, {"études", Text.Trim, type text}, {"expérience", Text.Trim, type text}, {"compétence", Text.Trim, type text}}),
+				    #"Espaces supprimés2" = Table.TransformColumns(#"Espaces supprimés1",{{"contrat", Text.Trim, type text}, {"region", Text.Trim, type text}, {"salaire", Text.Trim, type text}, {"source", Text.Trim, type text}, {"lien offre", Text.Trim, type text}}),
+				    #"Valeur remplacée3" = Table.ReplaceValue(#"Espaces supprimés2","Tout-le-cameroun","Tout_le_cameroun",Replacer.ReplaceText,{"region"}),
+				    #"Valeur remplacée4" = Table.ReplaceValue(#"Valeur remplacée3","Responsable commercial","Commercial",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée5" = Table.ReplaceValue(#"Valeur remplacée4","Commercial(e)","Commercial",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée6" = Table.ReplaceValue(#"Valeur remplacée5","Comptables","Comptable",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée7" = Table.ReplaceValue(#"Valeur remplacée6","Chauffeur professionnel","Chauffeur",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée8" = Table.ReplaceValue(#"Valeur remplacée7","02 chauffeurs","Chauffeur",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée9" = Table.ReplaceValue(#"Valeur remplacée8","03 chauffeurs","Chauffeur",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée10" = Table.ReplaceValue(#"Valeur remplacée9","Chauffeur - livreur","Chauffeur",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée11" = Table.ReplaceValue(#"Valeur remplacée10","Chauffeur / livreur","Livreur",Replacer.ReplaceText,{"poste"}),
+				    #"Transformation en Livreur 1" = Table.ReplaceValue(
+				    #"Valeur remplacée11",
+				    each[poste],
+				    each if Text.Contains([poste], "Chauffeur", Comparer.OrdinalIgnoreCase)
+				         and Text.Contains([poste], "livreur", Comparer.OrdinalIgnoreCase)
+				         then "Livreur"  else [poste],
+				         Replacer.ReplaceValue,
+				         {"poste"}
+				    ),
+				    
+				    Normalisation_Chauffeur_1 = Table.ReplaceValue(
+				        #"Transformation en Livreur 1",
+				        each [poste],
+				        each if Text.Contains([poste], "Avis de recrutement des chauffeurs", Comparer.OrdinalIgnoreCase)
+				            then "Chauffeur"
+				            else [poste],
+				        Replacer.ReplaceValue,
+				        {"poste"}
+				        ),
+				    #"Espaces supprimés3" = Table.TransformColumns(Normalisation_Chauffeur_1,{{"poste", Text.Trim, type text}}),
+				    #"Valeur remplacée12" = Table.ReplaceValue(#"Espaces supprimés3","Emploi-international","International",Replacer.ReplaceText,{"localité"}),
+				    #"Normalisation_coursier" = Table.TransformColumns(
+				        #"Valeur remplacée12",
+				        {{"poste", each fn_normalize_job_1(_, {"coursier"}, "Coursier", true)}}
+				     )
 				in
-				    #"Type modifié"
+				    Normalisation_coursier
+				```
 
 	annotation PBI_ResultType = Table
 

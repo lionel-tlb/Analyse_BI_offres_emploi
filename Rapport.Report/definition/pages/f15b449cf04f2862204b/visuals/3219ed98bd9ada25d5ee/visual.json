@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "1b6f4bd202a68040fbc0",
+  "name": "3219ed98bd9ada25d5ee",
   "position": {
-    "x": 0,
-    "y": 10,
-    "z": 1,
-    "height": 317.14285714285717,
-    "width": 250.00000000000003,
-    "tabOrder": 1
+    "x": 105.71428571428572,
+    "y": 57.142857142857146,
+    "z": 0,
+    "height": 467.14285714285717,
+    "width": 534.28571428571433,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "tableEx",
@@ -23,11 +23,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "poste"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region"
+              "queryRef": "merged_cm_jobs.poste",
+              "nativeQueryRef": "poste"
             },
             {
               "field": {
@@ -37,11 +37,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_regions"
+                  "Property": "count_jobs"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_regions",
-              "nativeQueryRef": "count_regions"
+              "queryRef": "merged_cm_jobs.count_jobs",
+              "nativeQueryRef": "count_jobs"
             }
           ]
         }
@@ -50,16 +50,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "region"
+                "Property": "count_jobs"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
@@ -69,7 +69,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b499735d673924fd2925",
+        "name": "4af761b040efdb4dbf52",
         "field": {
           "Column": {
             "Expression": {
@@ -77,13 +77,46 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "region"
+            "Property": "poste"
           }
         },
-        "type": "Categorical"
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "merged_cm_jobs",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Contains": {
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "poste"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "','"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       },
       {
-        "name": "90b7357918217d91f293",
+        "name": "595d67750da30eac1ca6",
         "field": {
           "Measure": {
             "Expression": {
@@ -91,7 +124,7 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "count_regions"
+            "Property": "count_jobs"
           }
         },
         "type": "Advanced"

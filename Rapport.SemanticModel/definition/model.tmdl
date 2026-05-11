@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["CheminProjet","merged_cm_jobs"]
+annotation PBI_QueryOrder = ["CheminProjet","merged_cm_jobs","fn_normalize_job_1"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

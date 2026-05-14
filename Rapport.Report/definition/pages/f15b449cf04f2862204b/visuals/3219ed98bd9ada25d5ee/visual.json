@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "3219ed98bd9ada25d5ee",
   "position": {
-    "x": 105.71428571428572,
-    "y": 57.142857142857146,
+    "x": 63.75,
+    "y": 253.75,
     "z": 0,
-    "height": 467.14285714285717,
-    "width": 534.28571428571433,
+    "height": 293.75,
+    "width": 778.75,
     "tabOrder": 0
   },
   "visual": {
@@ -50,16 +50,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "count_jobs"
+                "Property": "poste"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -69,54 +69,8 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4af761b040efdb4dbf52",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "poste"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "m",
-              "Entity": "merged_cm_jobs",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Contains": {
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "m"
-                        }
-                      },
-                      "Property": "poste"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "','"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
         "name": "595d67750da30eac1ca6",
+        "ordinal": 0,
         "field": {
           "Measure": {
             "Expression": {
@@ -128,7 +82,23 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "4af761b040efdb4dbf52",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "merged_cm_jobs"
+              }
+            },
+            "Property": "poste"
+          }
+        },
+        "type": "Advanced"
       }
-    ]
+    ],
+    "filterSortOrder": "Custom"
   }
 }

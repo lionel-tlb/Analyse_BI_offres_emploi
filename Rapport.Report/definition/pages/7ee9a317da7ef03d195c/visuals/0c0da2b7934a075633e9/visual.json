@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "0c0da2b7934a075633e9",
   "position": {
-    "x": 260,
-    "y": 10,
+    "x": 312.5,
+    "y": 142.5,
     "z": 0,
-    "height": 434.28571428571433,
-    "width": 578.57142857142856,
+    "height": 433.75,
+    "width": 578.75,
     "tabOrder": 0
   },
   "visual": {
@@ -42,11 +42,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_regions"
+                  "Property": "Postes/Region"
                 }
               },
               "queryRef": "merged_cm_jobs.count_regions",
-              "nativeQueryRef": "count_regions"
+              "nativeQueryRef": "Postes/Region"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "count_regions"
+                "Property": "Postes/Region"
               }
             },
             "direction": "Descending"
@@ -112,7 +112,7 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "count_regions"
+            "Property": "Postes/Region"
           }
         },
         "type": "Advanced"

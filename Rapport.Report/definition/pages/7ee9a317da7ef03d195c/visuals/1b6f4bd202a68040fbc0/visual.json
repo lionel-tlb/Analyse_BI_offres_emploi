@@ -3,10 +3,10 @@
   "name": "1b6f4bd202a68040fbc0",
   "position": {
     "x": 0,
-    "y": 10,
+    "y": 150,
     "z": 1,
-    "height": 317.14285714285717,
-    "width": 250.00000000000003,
+    "height": 378.75,
+    "width": 285,
     "tabOrder": 1
   },
   "visual": {
@@ -37,11 +37,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_regions"
+                  "Property": "Postes/Region"
                 }
               },
               "queryRef": "merged_cm_jobs.count_regions",
-              "nativeQueryRef": "count_regions"
+              "nativeQueryRef": "Postes/Region"
             }
           ]
         }
@@ -61,15 +61,31 @@
             },
             "direction": "Ascending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "b499735d673924fd2925",
+        "name": "10180960bea6e7f3fa95",
         "field": {
           "Column": {
             "Expression": {
@@ -83,7 +99,7 @@
         "type": "Categorical"
       },
       {
-        "name": "90b7357918217d91f293",
+        "name": "2d6266a9eb2d0de9c9ea",
         "field": {
           "Measure": {
             "Expression": {
@@ -91,7 +107,7 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "count_regions"
+            "Property": "Postes/Region"
           }
         },
         "type": "Advanced"

@@ -1,13 +1,21 @@
 table merged_cm_jobs
 	lineageTag: cc8e0fff-0564-469f-ba1c-521497bab35b
 
-	measure count_regions = COUNT(merged_cm_jobs[region])
+	measure Postes/Region = COUNT(merged_cm_jobs[region])
 		formatString: 0
 		lineageTag: fa2c6b52-864d-400e-a029-0e7380bc1fa4
 
-	measure count_jobs = COUNT(merged_cm_jobs[poste])
+	measure 'Nombre de postes' = COUNT(merged_cm_jobs[poste])
 		formatString: 0
 		lineageTag: 9fcdaebf-92e8-4f1c-9f32-4dc6493d7bb1
+
+	measure count_distinct_region = DISTINCTCOUNT(merged_cm_jobs[region])
+		formatString: 0
+		lineageTag: 4f9b316c-709e-4f7f-97b9-e80e7fa26c7b
+
+	measure count_distinct_companies = DISTINCTCOUNT(merged_cm_jobs[organisation])
+		formatString: 0
+		lineageTag: 0ac9400b-7ead-4fac-ae52-ad81b16f2e52
 
 	column poste
 		dataType: string
@@ -210,9 +218,16 @@ table merged_cm_jobs
 				    #"Nettoyage_MF" = Table.ReplaceValue(#"Remove_chars", "(m/f)", "", Replacer.ReplaceText, {"poste"}),
 				    #"Nettoyage_MF_2" = Table.ReplaceValue(#"Nettoyage_MF", "m/f", "", Replacer.ReplaceText, {"poste"}),
 				    #"Lignes filtrées1" = Table.SelectRows(Nettoyage_MF_2, each true),
-				    #"Lignes triées1" = Table.Sort(#"Lignes filtrées1",{{"poste", Order.Ascending}}) 
+				    #"Lignes triées1" = Table.Sort(#"Lignes filtrées1",{{"poste", Order.Ascending}}),
+				    #"Valeur remplacée15" = Table.ReplaceValue(#"Lignes triées1","Avis de recrutement des caissières douala – yaoundé – bafoussam – kribi","Caissière",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée16" = Table.ReplaceValue(#"Valeur remplacée15","Campagne de stages  douala - yaoundé - bafoussam - garoua","Stagiaire",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée17" = Table.ReplaceValue(#"Valeur remplacée16","Request for proposal (rfp): purchase of office open equipements; bafoussam","Commercial",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée18" = Table.ReplaceValue(#"Valeur remplacée17","Jobs opportunities : sales executive - yaoundé and bafoussam","Commercial",Replacer.ReplaceText,{"poste"}),
+				    #"Valeur remplacée19" = Table.ReplaceValue(#"Valeur remplacée18","Avis de recrutement des agents de recouvrement  yaoundé bafoussam","Agent de recouvrement",Replacer.ReplaceText,{"poste"}),
+				    #"Lignes filtrées2" = Table.SelectRows(#"Valeur remplacée19", each not Text.Contains([poste], "douala") and not Text.Contains([poste], "yaounde") and not Text.Contains([poste], "yaoundé") and not Text.Contains([poste], "bafoussam") and not Text.Contains([poste], "bamenda") and not Text.Contains([poste], "ngaoundéré") and not Text.Contains([poste], "ngaounderé") and not Text.Contains([poste], "ngaoundere") and [poste] <> "&" and not Text.Contains([poste], "bertoua")),
+				    #"Lignes filtrées3" = Table.SelectRows(#"Lignes filtrées2", each not Text.Contains([poste], "avis") and not Text.Contains([poste], "appel") and not Text.Contains([poste], "recrutement") and not Text.Contains([poste], "offre"))
 				in
-				    #"Lignes triées1"
+				    #"Lignes filtrées3"
 				```
 
 	annotation PBI_ResultType = Table

@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "1b6f4bd202a68040fbc0",
+  "name": "c7f2a1dcff5e524b5921",
   "position": {
-    "x": 112,
-    "y": 260,
+    "x": 0,
+    "y": 342,
     "z": 1,
-    "height": 380,
-    "width": 284,
+    "height": 378,
+    "width": 466,
     "tabOrder": 1
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "compétence"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region"
+              "queryRef": "merged_cm_jobs.compétence",
+              "nativeQueryRef": "compétence"
             },
             {
               "field": {
@@ -37,54 +37,22 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "count_compétences"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_regions",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.count_compétences",
+              "nativeQueryRef": "count_compétences"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "merged_cm_jobs"
-                  }
-                },
-                "Property": "Postes/Region"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
-    },
-    "visualContainerObjects": {
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "10180960bea6e7f3fa95",
+        "name": "37e320f4a1b9a59e7fb2",
         "field": {
           "Column": {
             "Expression": {
@@ -92,13 +60,13 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "region"
+            "Property": "compétence"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "2d6266a9eb2d0de9c9ea",
+        "name": "9bd9abb6b5a9cd9e0701",
         "field": {
           "Measure": {
             "Expression": {
@@ -106,7 +74,7 @@
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "Postes/Region"
+            "Property": "count_compétences"
           }
         },
         "type": "Advanced"

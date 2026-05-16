@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "62157262a60eb4970dd4",
+  "position": {
+    "x": 481.53846153846155,
+    "y": 173.84615384615384,
+    "z": 8,
+    "height": 80,
+    "width": 321.53846153846155,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "PROJET INF 326 : Groupe 4",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Comic Sans MS",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -50,6 +50,22 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "ud_logo9318921983075805.jpg",
+          "path": "ud_logo9318921983075805.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "logo_fs36748951347382586.jpg",
+          "path": "logo_fs36748951347382586.jpg",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {

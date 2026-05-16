@@ -1,19 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "f4e42beb77f9eaee6cd0",
+  "name": "30726491f96132cf6c6e",
   "position": {
-    "x": 517.14285714285722,
-    "y": 45.714285714285715,
-    "z": 4,
-    "height": 88.571428571428584,
-    "width": 252.85714285714286,
-    "tabOrder": 4
+    "x": 24.285714285714288,
+    "y": 172.85714285714286,
+    "z": 6,
+    "height": 334.28571428571433,
+    "width": 620,
+    "tabOrder": 6
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "poste"
+                }
+              },
+              "queryRef": "merged_cm_jobs.poste",
+              "nativeQueryRef": "poste",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
           "projections": [
             {
               "field": {
@@ -23,11 +42,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_distinct_companies"
+                  "Property": "Nombre de postes"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_distinct_companies",
-              "nativeQueryRef": "count_distinct_companies"
+              "queryRef": "merged_cm_jobs.Nombre de postes",
+              "nativeQueryRef": "Nombre de postes"
             }
           ]
         }
@@ -42,7 +61,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "count_distinct_companies"
+                "Property": "Nombre de postes"
               }
             },
             "direction": "Descending"
@@ -52,13 +71,26 @@
       }
     },
     "objects": {
-      "categoryLabels": [
+      "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -67,7 +99,7 @@
       ]
     },
     "visualContainerObjects": {
-      "title": [
+      "visualHeader": [
         {
           "properties": {
             "show": {
@@ -76,18 +108,51 @@
                   "Value": "true"
                 }
               }
-            },
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Nombre d''entreprises'"
+                  "Value": "'Les 10 métiers les plus demandés au Cameroun'"
                 }
               }
             },
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             },
@@ -95,31 +160,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2C3E50'"
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
-            },
-            "heading": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Heading3'"
                 }
               }
             },
@@ -133,17 +173,13 @@
           }
         }
       ],
-      "background": [
+      "dropShadow": [
         {
           "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#F4F6F9'"
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -163,27 +199,24 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "17D"
+                  "Value": "23D"
                 }
               }
             }
           }
         }
       ],
-      "visualHeader": [
+      "background": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
                 }
               }
             }
@@ -192,23 +225,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1c807e139fb13b11ad07",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "count_distinct_companies"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

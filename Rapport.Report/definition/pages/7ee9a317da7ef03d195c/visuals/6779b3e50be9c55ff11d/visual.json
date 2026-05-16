@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "6779b3e50be9c55ff11d",
   "position": {
-    "x": 111.49692034418327,
-    "y": 45.35467946204065,
+    "x": 11.428571428571429,
+    "y": 45.714285714285715,
     "z": 2,
-    "height": 88.819580613162941,
-    "width": 196.53694433550947,
+    "height": 88.571428571428584,
+    "width": 197.14285714285717,
     "tabOrder": 2
   },
   "visual": {
@@ -81,7 +81,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Nombre de postes'"
+                  "Value": "'Nombre d''offres'"
                 }
               }
             },
@@ -114,6 +114,13 @@
               "expr": {
                 "Literal": {
                   "Value": "16D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Comic Sans MS'''"
                 }
               }
             }

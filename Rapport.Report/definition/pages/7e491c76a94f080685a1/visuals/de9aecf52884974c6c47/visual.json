@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "e6f2f99e54afa19f1bfd",
+  "name": "de9aecf52884974c6c47",
   "position": {
-    "x": 514,
-    "y": 456,
-    "z": 3,
-    "height": 234,
-    "width": 716,
-    "tabOrder": 3
+    "x": 49.959183673469383,
+    "y": 218.93877551020407,
+    "z": 0,
+    "height": 380.57142857142856,
+    "width": 285.0612244897959,
+    "tabOrder": 0
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -23,17 +23,12 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "organisation"
+                  "Property": "region"
                 }
               },
-              "queryRef": "merged_cm_jobs.organisation",
-              "nativeQueryRef": "organisation",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "queryRef": "merged_cm_jobs.region",
+              "nativeQueryRef": "region"
+            },
             {
               "field": {
                 "Measure": {
@@ -42,11 +37,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_companies"
+                  "Property": "Postes/Region"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_companies",
-              "nativeQueryRef": "count_companies"
+              "queryRef": "merged_cm_jobs.count_regions",
+              "nativeQueryRef": "Postes/Region"
             }
           ]
         }
@@ -61,7 +56,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "count_companies"
+                "Property": "Postes/Region"
               }
             },
             "direction": "Descending"
@@ -69,14 +64,14 @@
         ]
       }
     },
-    "objects": {
-      "labels": [
+    "visualContainerObjects": {
+      "border": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }

@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "0197b3f1c2389d456714",
+  "name": "00539f1fe081025419ac",
   "position": {
-    "x": 336,
-    "y": 0,
-    "z": 0,
-    "height": 402,
-    "width": 862,
-    "tabOrder": 0
+    "x": 20,
+    "y": 530,
+    "z": 8,
+    "height": 178.57142857142858,
+    "width": 624.28571428571433,
+    "tabOrder": 8
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -23,17 +23,12 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "poste"
+                  "Property": "contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.poste",
-              "nativeQueryRef": "poste",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "queryRef": "merged_cm_jobs.contrat",
+              "nativeQueryRef": "contrat"
+            },
             {
               "field": {
                 "Measure": {
@@ -42,11 +37,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Nombre de postes"
+                  "Property": "count_contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.Nombre de postes",
-              "nativeQueryRef": "Nombre de postes"
+              "queryRef": "merged_cm_jobs.count_contrat",
+              "nativeQueryRef": "count_contrat"
             }
           ]
         }
@@ -61,45 +56,16 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Nombre de postes"
+                "Property": "count_contrat"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "visualContainerObjects": {
-      "visualHeader": [
+      "border": [
         {
           "properties": {
             "show": {
@@ -108,17 +74,11 @@
                   "Value": "true"
                 }
               }
-            }
-          }
-        }
-      ],
-      "visualTooltip": [
-        {
-          "properties": {
-            "show": {
+            },
+            "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "20D"
                 }
               }
             }
@@ -128,17 +88,24 @@
       "title": [
         {
           "properties": {
-            "text": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Les 10 métiers les plus demandés au Cameroun'"
+                  "Value": "true"
                 }
               }
             },
-            "bold": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'Type de contrat de travail'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Comic Sans MS'''"
                 }
               }
             },
@@ -146,13 +113,6 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             },
@@ -165,40 +125,45 @@
             }
           }
         }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#222222'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b967463f1a21feef3377",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "poste"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1432af66daa6e8c8cf6d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "Nombre de postes"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -29,6 +29,18 @@ table merged_cm_jobs
 		formatString: 0
 		lineageTag: 33920fd3-5b21-4877-8f61-1ca60af07663
 
+	measure nb_years = DISTINCTCOUNT(merged_cm_jobs[Année])
+		formatString: 0
+		lineageTag: af9531e5-e687-40db-95e1-5ecfb13f43ca
+
+	measure count_metiers = DISTINCTCOUNT(merged_cm_jobs[poste])
+		formatString: 0
+		lineageTag: be4bbca3-469a-4a08-92e4-25644f479672
+
+	measure count_contrat = COUNT(merged_cm_jobs[contrat])
+		formatString: 0
+		lineageTag: 87a18451-efc3-4395-b62d-2e0e320bdfcf
+
 	column poste
 		dataType: string
 		lineageTag: a7b71a44-f084-495e-b088-4cea3e76af9c
@@ -130,6 +142,24 @@ table merged_cm_jobs
 		lineageTag: d6bcec15-9d1e-4c3a-8935-f7d4bca76a4e
 		summarizeBy: none
 		sourceColumn: lien offre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Année
+		dataType: int64
+		formatString: 0
+		lineageTag: 92b812dc-74a5-41ab-8e06-3153dc67bec9
+		summarizeBy: sum
+		sourceColumn: Année
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mois
+		dataType: int64
+		formatString: 0
+		lineageTag: bb587218-b988-44e1-b018-3e1de1e75c93
+		summarizeBy: sum
+		sourceColumn: Mois
 
 		annotation SummarizationSetBy = Automatic
 
@@ -377,10 +407,14 @@ table merged_cm_jobs
 				    #"ValueReplacement127" = Table.ReplaceValue(#"ValueReplacement126","CRM - MERCHANDISING - NÉGOCIATION - TECHNIQUES DE VENTE - VENTE","CRM - DÉVELOPPEMENT COMMERCIAL - DEVIS - NÉGOCIATION - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
 				    #"ValueReplacement128" = Table.ReplaceValue(#"ValueReplacement127","AUDIT - COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT - IDEAL - ITIL - MICROSOFT","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
 				    #"ValueReplacement129" = Table.ReplaceValue(#"ValueReplacement128","AUDIT - COMPLIANCE - COMPTABILITÉ - CONTINUOUS IMPROVEMENT - CORPORATE FINANCE - FINANCE - FINANCIAL ANALYSIS - FINANCIAL MANAGEMENT - FORECASTING - GESTION - LEADERSHIP - MAINTENANCE - MANAGEMENT - PRODUCTION - QUALITÉ - RISK MANAGEMENT","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement130" = Table.ReplaceValue(#"ValueReplacement129","AUDIT - AUDIT INTERNE - COMPTABILITÉ - FINANCE - FORMATION - GESTION - GESTION ADMINISTRATIVE","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"})
+				    #"ValueReplacement130" = Table.ReplaceValue(#"ValueReplacement129","AUDIT - AUDIT INTERNE - COMPTABILITÉ - FINANCE - FORMATION - GESTION - GESTION ADMINISTRATIVE","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
+				    #"Année insérée" = Table.AddColumn(ValueReplacement130, "Année", each Date.Year([date de publication]), Int64.Type),
+				    #"Colonnes permutées" = Table.ReorderColumns(#"Année insérée",{"poste", "localité", "organisation", "date de publication", "Année", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"}),
+				    #"Mois inséré" = Table.AddColumn(#"Colonnes permutées", "Mois", each Date.Month([date de publication]), Int64.Type),
+				    #"Colonnes permutées1" = Table.ReorderColumns(#"Mois inséré",{"poste", "localité", "organisation", "date de publication", "Année", "Mois", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"})
 				
 				in
-				    #"ValueReplacement130"
+				    #"Colonnes permutées1"
 				```
 
 	annotation PBI_ResultType = Table

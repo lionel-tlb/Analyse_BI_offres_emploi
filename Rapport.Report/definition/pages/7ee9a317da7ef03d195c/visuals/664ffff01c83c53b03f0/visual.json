@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "f4e42beb77f9eaee6cd0",
+  "name": "664ffff01c83c53b03f0",
   "position": {
-    "x": 517.14285714285722,
+    "x": 1042.8571428571429,
     "y": 45.714285714285715,
-    "z": 4,
+    "z": 5,
     "height": 88.571428571428584,
-    "width": 252.85714285714286,
-    "tabOrder": 4
+    "width": 214.28571428571431,
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "count_distinct_companies"
+                  "Property": "nb_years"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_distinct_companies",
-              "nativeQueryRef": "count_distinct_companies"
+              "queryRef": "merged_cm_jobs.nb_years",
+              "nativeQueryRef": "nb_years"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "count_distinct_companies"
+                "Property": "nb_years"
               }
             },
             "direction": "Descending"
@@ -80,7 +80,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Nombre d''entreprises'"
+                  "Value": "'Nombres d''années'"
                 }
               }
             },
@@ -192,23 +192,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1c807e139fb13b11ad07",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "count_distinct_companies"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

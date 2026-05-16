@@ -1,38 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "0c0da2b7934a075633e9",
+  "name": "6779b3e50be9c55ff11d",
   "position": {
-    "x": 677.14285714285722,
-    "y": 172.85714285714286,
-    "z": 0,
-    "height": 535.71428571428578,
-    "width": 580,
-    "tabOrder": 0
+    "x": 11.428571428571429,
+    "y": 45.714285714285715,
+    "z": 2,
+    "height": 88.571428571428584,
+    "width": 197.14285714285717,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "merged_cm_jobs"
-                    }
-                  },
-                  "Property": "region"
-                }
-              },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -42,11 +23,12 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "Nombre de postes"
                 }
               },
-              "queryRef": "merged_cm_jobs.Postes/Region",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.count_jobs",
+              "nativeQueryRef": "Nombre de postes",
+              "format": "0.00"
             }
           ]
         }
@@ -61,7 +43,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Postes/Region"
+                "Property": "Nombre de postes"
               }
             },
             "direction": "Descending"
@@ -71,26 +53,13 @@
       }
     },
     "objects": {
-      "labels": [
+      "categoryLabels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "legend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -99,53 +68,27 @@
       ]
     },
     "visualContainerObjects": {
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualTooltip": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "title": [
         {
           "properties": {
-            "text": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Repartition térritoriales des offres'"
+                  "Value": "true"
                 }
               }
             },
-            "fontSize": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "'Nombre d''offres'"
                 }
               }
             },
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -156,10 +99,45 @@
                 }
               }
             },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2C3E50'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
             "fontFamily": {
               "expr": {
                 "Literal": {
                   "Value": "'''Comic Sans MS'''"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F4F6F9'"
+                    }
+                  }
                 }
               }
             }
@@ -179,14 +157,14 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "17D"
                 }
               }
             }
           }
         }
       ],
-      "dropShadow": [
+      "visualHeader": [
         {
           "properties": {
             "show": {
@@ -196,31 +174,10 @@
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#222222'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#DFEBF4'"
-                    }
-                  }
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -233,18 +190,18 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7061cde39bbf7f714e10",
+        "name": "604dc14e104b38928618",
         "field": {
-          "Column": {
+          "Measure": {
             "Expression": {
               "SourceRef": {
                 "Entity": "merged_cm_jobs"
               }
             },
-            "Property": "region"
+            "Property": "Nombre de postes"
           }
         },
-        "type": "Categorical"
+        "type": "Advanced"
       }
     ]
   }

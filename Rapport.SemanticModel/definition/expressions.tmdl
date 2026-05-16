@@ -1,4 +1,4 @@
-expression CheminProjet = "C:\Users\TLB\BI_WORK\ANALYSE_BI_OFFRES_EMPLOI" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression CheminProjet = "D:\TLB_DREAMS\WORK\BI_WORK\Analyse_BI_offres_emploi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 5dba5a64-197b-4af4-bf88-9a684faa85b5
 
 	annotation PBI_NavigationStepName = Navigation

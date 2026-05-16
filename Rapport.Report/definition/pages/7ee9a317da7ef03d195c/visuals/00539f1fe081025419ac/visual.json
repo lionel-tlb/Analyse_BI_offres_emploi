@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "0c0da2b7934a075633e9",
+  "name": "00539f1fe081025419ac",
   "position": {
-    "x": 677.14285714285722,
-    "y": 172.85714285714286,
-    "z": 0,
-    "height": 535.71428571428578,
-    "width": 580,
-    "tabOrder": 0
+    "x": 20,
+    "y": 530,
+    "z": 8,
+    "height": 178.57142857142858,
+    "width": 624.28571428571433,
+    "tabOrder": 8
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -23,17 +23,12 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "queryRef": "merged_cm_jobs.contrat",
+              "nativeQueryRef": "contrat"
+            },
             {
               "field": {
                 "Measure": {
@@ -42,11 +37,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "count_contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.Postes/Region",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.count_contrat",
+              "nativeQueryRef": "count_contrat"
             }
           ]
         }
@@ -61,111 +56,15 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Postes/Region"
+                "Property": "count_contrat"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "legend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "visualContainerObjects": {
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualTooltip": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Repartition térritoriales des offres'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Comic Sans MS'''"
-                }
-              }
-            }
-          }
-        }
-      ],
       "border": [
         {
           "properties": {
@@ -180,6 +79,60 @@
               "expr": {
                 "Literal": {
                   "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Type de contrat de travail'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Comic Sans MS'''"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -209,43 +162,8 @@
             }
           }
         }
-      ],
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#DFEBF4'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7061cde39bbf7f714e10",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "region"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

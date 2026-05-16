@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "0c0da2b7934a075633e9",
+  "name": "30726491f96132cf6c6e",
   "position": {
-    "x": 677.14285714285722,
+    "x": 24.285714285714288,
     "y": 172.85714285714286,
-    "z": 0,
-    "height": 535.71428571428578,
-    "width": 580,
-    "tabOrder": 0
+    "z": 6,
+    "height": 334.28571428571433,
+    "width": 620,
+    "tabOrder": 6
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "poste"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region",
+              "queryRef": "merged_cm_jobs.poste",
+              "nativeQueryRef": "poste",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "Nombre de postes"
                 }
               },
-              "queryRef": "merged_cm_jobs.Postes/Region",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.Nombre de postes",
+              "nativeQueryRef": "Nombre de postes"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Postes/Region"
+                "Property": "Nombre de postes"
               }
             },
             "direction": "Descending"
@@ -84,7 +84,7 @@
           }
         }
       ],
-      "legend": [
+      "categoryAxis": [
         {
           "properties": {
             "show": {
@@ -131,7 +131,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Repartition térritoriales des offres'"
+                  "Value": "'Les 10 métiers les plus demandés au Cameroun'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             },
@@ -142,7 +149,7 @@
                 }
               }
             },
-            "bold": {
+            "italic": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -166,6 +173,19 @@
           }
         }
       ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
       "border": [
         {
           "properties": {
@@ -179,31 +199,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "dropShadow": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#222222'"
-                    }
-                  }
+                  "Value": "23D"
                 }
               }
             }
@@ -218,7 +214,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#DFEBF4'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -229,23 +225,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7061cde39bbf7f714e10",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "region"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

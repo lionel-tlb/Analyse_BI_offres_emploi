@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "0c0da2b7934a075633e9",
+  "name": "55ead7439230490a3e7a",
   "position": {
-    "x": 677.14285714285722,
-    "y": 172.85714285714286,
-    "z": 0,
-    "height": 535.71428571428578,
-    "width": 580,
-    "tabOrder": 0
+    "x": 784.28571428571433,
+    "y": 430,
+    "z": 2,
+    "height": 257.14285714285717,
+    "width": 470.00000000000006,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "funnel",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "études"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region",
+              "queryRef": "merged_cm_jobs.études",
+              "nativeQueryRef": "études",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "count_etudes"
                 }
               },
-              "queryRef": "merged_cm_jobs.Postes/Region",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.count_etudes",
+              "nativeQueryRef": "count_etudes"
             }
           ]
         }
@@ -61,77 +61,29 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Postes/Region"
+                "Property": "count_etudes"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "legend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "visualContainerObjects": {
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualTooltip": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "title": [
         {
           "properties": {
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Repartition térritoriales des offres'"
+                  "Value": "'Niveau d''études réquis'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Comic Sans MS'''"
                 }
               }
             },
@@ -142,24 +94,35 @@
                 }
               }
             },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "alignment": {
               "expr": {
                 "Literal": {
                   "Value": "'center'"
                 }
               }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
             },
-            "fontFamily": {
+            "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Comic Sans MS'''"
+                  "Value": "90D"
                 }
               }
             }
@@ -173,6 +136,18 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.2
+                    }
+                  }
                 }
               }
             },
@@ -200,25 +175,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#222222'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#DFEBF4'"
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
                     }
                   }
                 }
@@ -229,23 +188,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7061cde39bbf7f714e10",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "region"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

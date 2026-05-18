@@ -20,6 +20,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 98
+          },
+          "nodeIndex": "D_poste",
+          "nodeLineageTag": "2eac4228-c869-4de5-b1e7-1946ec78a778",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Toutes les tables",

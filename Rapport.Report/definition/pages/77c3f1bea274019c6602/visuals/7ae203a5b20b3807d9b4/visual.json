@@ -4,10 +4,10 @@
   "position": {
     "x": 78.461538461538453,
     "y": 253.84615384615384,
-    "z": 2,
+    "z": 0,
     "height": 136.92307692307691,
     "width": 1083.0769230769231,
-    "tabOrder": 2
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -27,20 +27,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "THEME :",
+                    "value": "THEME : Analyse du marché de l'emploi au Cameroun ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Times New Roman",
                       "fontSize": "32pt",
-                      "color": "#118dff"
-                    }
-                  },
-                  {
-                    "value": " Analyse du marché de l'emploi au Cameroun ",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Times New Roman",
-                      "fontSize": "32pt"
+                      "color": "#000000"
                     }
                   }
                 ],
@@ -53,13 +45,34 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Times New Roman",
-                      "fontSize": "32pt"
+                      "fontSize": "32pt",
+                      "color": "#000000"
                     }
                   }
                 ],
                 "horizontalTextAlignment": "center"
               }
             ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       ]

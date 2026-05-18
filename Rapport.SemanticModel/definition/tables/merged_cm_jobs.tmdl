@@ -412,7 +412,6 @@ table merged_cm_jobs
 				    #"Colonnes permutées" = Table.ReorderColumns(#"Année insérée",{"poste", "localité", "organisation", "date de publication", "Année", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"}),
 				    #"Mois inséré" = Table.AddColumn(#"Colonnes permutées", "Mois", each Date.Month([date de publication]), Int64.Type),
 				    #"Colonnes permutées1" = Table.ReorderColumns(#"Mois inséré",{"poste", "localité", "organisation", "date de publication", "Année", "Mois", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"})
-				
 				in
 				    #"Colonnes permutées1"
 				```

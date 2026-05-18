@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "de9aecf52884974c6c47",
+  "name": "c53543f62263a1d567b6",
   "position": {
-    "x": 50,
-    "y": 279.6875,
-    "z": 0,
-    "height": 381.25,
-    "width": 284.375,
-    "tabOrder": 0
+    "x": 12.5,
+    "y": 517.1875,
+    "z": 6007,
+    "height": 189.0625,
+    "width": 628.125,
+    "tabOrder": 6007
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -23,12 +23,18 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "region"
+                  "Property": "contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region"
-            },
+              "queryRef": "merged_cm_jobs.contrat",
+              "nativeQueryRef": "Catégorie de contrat",
+              "active": true,
+              "displayName": "Catégorie de contrat"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
             {
               "field": {
                 "Measure": {
@@ -37,11 +43,12 @@
                       "Entity": "merged_cm_jobs"
                     }
                   },
-                  "Property": "Postes/Region"
+                  "Property": "count_contrat"
                 }
               },
-              "queryRef": "merged_cm_jobs.count_regions",
-              "nativeQueryRef": "Postes/Region"
+              "queryRef": "merged_cm_jobs.count_contrat",
+              "nativeQueryRef": "Nombre de contrats",
+              "displayName": "Nombre de contrats"
             }
           ]
         }
@@ -56,12 +63,13 @@
                     "Entity": "merged_cm_jobs"
                   }
                 },
-                "Property": "Postes/Region"
+                "Property": "count_contrat"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -71,7 +79,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
                 }
               }
             }

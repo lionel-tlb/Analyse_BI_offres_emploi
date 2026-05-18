@@ -1,0 +1,24 @@
+table D_poste
+	lineageTag: 2eac4228-c869-4de5-b1e7-1946ec78a778
+
+	column poste
+		dataType: string
+		lineageTag: 84c73e84-b3d7-42d3-9c88-b8e7eb98879c
+		summarizeBy: none
+		sourceColumn: poste
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_poste = m
+		mode: import
+		source =
+				let
+				    Source = merged_cm_jobs,
+				    #"Autres colonnes supprimées" = Table.SelectColumns(Source,{"poste"})
+				in
+				    #"Autres colonnes supprimées"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

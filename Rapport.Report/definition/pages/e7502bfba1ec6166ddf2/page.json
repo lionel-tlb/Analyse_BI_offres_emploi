@@ -14,7 +14,7 @@
               "color": {
                 "expr": {
                   "ThemeDataColor": {
-                    "ColorId": 0,
+                    "ColorId": 2,
                     "Percent": 0
                   }
                 }
@@ -24,7 +24,7 @@
           "transparency": {
             "expr": {
               "Literal": {
-                "Value": "100D"
+                "Value": "0D"
               }
             }
           }

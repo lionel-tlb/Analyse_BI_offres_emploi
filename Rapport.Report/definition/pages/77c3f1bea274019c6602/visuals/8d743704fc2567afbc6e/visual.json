@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "62157262a60eb4970dd4",
+  "name": "8d743704fc2567afbc6e",
   "position": {
-    "x": 481.53846153846155,
-    "y": 173.84615384615384,
-    "z": 6000,
-    "height": 80,
-    "width": 321.53846153846155,
-    "tabOrder": 3000
+    "x": 829.7842923421008,
+    "y": 608.71037503927835,
+    "z": 7000,
+    "height": 84.79547512984972,
+    "width": 355.83815456276221,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "textbox",
@@ -26,7 +26,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "PROJET INF 326 : Groupe 4",
+                    "value": "Année académique : 2025/2026",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Comic Sans MS",

@@ -67,7 +67,7 @@ table merged_cm_jobs
 
 	column 'date de publication'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 69bb36a2-618c-4b28-a71c-08ffc1827947
 		summarizeBy: none
 		sourceColumn: date de publication

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "6779b3e50be9c55ff11d",
   "position": {
-    "x": 11.428571428571429,
-    "y": 45.714285714285715,
-    "z": 2,
-    "height": 88.571428571428584,
-    "width": 197.14285714285717,
-    "tabOrder": 2
+    "x": 12.5,
+    "y": 87.5,
+    "z": 1000,
+    "height": 89.0625,
+    "width": 196.875,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "card",
@@ -186,23 +186,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "604dc14e104b38928618",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "merged_cm_jobs"
-              }
-            },
-            "Property": "Nombre de postes"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

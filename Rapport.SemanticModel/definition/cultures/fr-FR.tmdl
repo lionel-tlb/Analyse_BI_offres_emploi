@@ -152,6 +152,16 @@ cultureInfo fr-FR
 			          "poste": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Métiers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -243,6 +253,16 @@ cultureInfo fr-FR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "Entreprises": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -625,6 +645,16 @@ cultureInfo fr-FR
 			          "contrat": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Catégorie de contrat": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -710,6 +740,26 @@ cultureInfo fr-FR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "Région": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Zones ciblées": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -862,38 +912,6 @@ cultureInfo fr-FR
 			        }
 			      ]
 			    },
-			    "merged_cm_job.année": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "merged_cm_jobs",
-			          "ConceptualProperty": "Année"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "année": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
-			    "merged_cm_job.mois": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "merged_cm_jobs",
-			          "ConceptualProperty": "Mois"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "mois": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
 			    "merged_cm_job.postes_region": {
 			      "Definition": {
 			        "Binding": {
@@ -1019,6 +1037,16 @@ cultureInfo fr-FR
 			            },
 			            "Weight": 0.727
 			          }
+			        },
+			        {
+			          "Nombre d'offres par région": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -1034,6 +1062,16 @@ cultureInfo fr-FR
 			        {
 			          "nombre de postes": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Nombre d'offres": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -1616,9 +1654,3163 @@ cultureInfo fr-FR
 			          }
 			        }
 			      ]
+			    },
+			    "merged_cm_job.count_contrat": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs",
+			          "ConceptualProperty": "count_contrat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "count contrat": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "count_contrat": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "amount contrat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "Nombre de contrats": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "D_poste": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_poste"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "D poste": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "D_poste": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "D_poste.poste": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_poste",
+			          "ConceptualProperty": "poste"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "poste": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job.année": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs",
+			          "ConceptualProperty": "Année"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "année": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job.mois": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs",
+			          "ConceptualProperty": "Mois"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mois": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job.count_localité": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs",
+			          "ConceptualProperty": "count_localité"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "count localité": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "count_localité": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "amount localité": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "Nombre d'offres": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "merged cm job v 1": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "merged_cm_jobs_v1": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "v 1": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "job v 1": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "cm job v 1": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "job": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "cm job": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "merged cm occupation v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "merged cm profession v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "cm occupation v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "cm profession v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "occupation v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "profession v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "merged cm work v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "merged cm trade v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "merged cm career v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "merged cm employment v 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.poste": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "poste"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "poste": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.localité": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "localité"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "localité": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.organisation": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "organisation"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "organisation": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "organization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "corporation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "institution": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "org": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "business": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "company": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.date_de_publication": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "date de publication"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date de publication": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "moment de publication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "period de publication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "date de journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "date de pamphlet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "date de book": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "date de magazine": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "date de newspaper": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "date de periodical": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "VariationSource": "date de publication",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hiérarchie de dates"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hiérarchie de date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hiérarchie de moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hiérarchie de period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.date_de_publication.année": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "VariationSource": "date de publication",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hiérarchie de dates",
+			          "HierarchyLevel": "Année"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "année": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date de publication année": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment de publication année": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "period de publication année": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.date_de_publication.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "VariationSource": "date de publication",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hiérarchie de dates",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date de publication trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment de publication trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "period de publication trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.date_de_publication.mois": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "VariationSource": "date de publication",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hiérarchie de dates",
+			          "HierarchyLevel": "Mois"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mois": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date de publication mois": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment de publication mois": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "period de publication mois": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.date_de_publication.jour": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "VariationSource": "date de publication",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hiérarchie de dates",
+			          "HierarchyLevel": "Jour"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "jour": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date de publication jour": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment de publication jour": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "period de publication jour": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.année": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "Année"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "année": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.mois": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "Mois"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mois": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.étude": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "études"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "étude": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.expérience": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "expérience"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "expérience": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.compétence": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "compétence"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "compétence": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.contrat": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "contrat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "contrat": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.region": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "region"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "region": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "province": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "area": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "district": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "section": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "zone": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "continent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.salaire": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "salaire"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "salaire": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.source": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "source"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "source": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "basis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "font": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "birthplace": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "foundation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cause": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "spring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cradle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "home": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "informant": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "spokesperson": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1.lien_offre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "merged_cm_jobs_v1",
+			          "ConceptualProperty": "lien offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "lien offre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "merged_cm_job_v_1_date_de_publication_mois_has_merged_cm_job_v_1_date_de_publication_jour": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.mois"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.jour": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.jour"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.jour"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_have_jour"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.jour"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "jour_have_moises"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.jour"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "jour_are_in_moises1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_trimestre_has_merged_cm_job_v_1_date_de_publication_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.trimestre"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_moises"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_are_in_trimestres1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_année_has_merged_cm_job_v_1_date_de_publication_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.année"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.année"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "années_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_années"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_années1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_hiérarchie_de_date_has_merged_cm_job_v_1_date_de_publication_jour": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.jour": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.jour"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.jour"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_jour"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_hiérarchie_de_date_has_merged_cm_job_v_1_date_de_publication_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_moises"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_hiérarchie_de_date_has_merged_cm_job_v_1_date_de_publication_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_trimestres"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_hiérarchie_de_date_has_merged_cm_job_v_1_date_de_publication_année": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.année"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_années"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_date_de_publication_has_hiérarchie_de_date": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1.date_de_publication": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1.date_de_publication"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication.hiérarchie_de_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_de_publications_have_hiérarchie_de_dates"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_mois_has_merged_cm_job_date_de_publication_jour": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.mois"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.jour": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.jour"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.jour"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_have_jour1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.jour"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "jour_have_moises1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.jour"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "jour_are_in_moises"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_trimestre_has_merged_cm_job_date_de_publication_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.trimestre"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_moises1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_have_trimestres1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moises_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_année_has_merged_cm_job_date_de_publication_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.année"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.année"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "années_have_trimestres1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_années1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_années"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_jour": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.jour": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.jour"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.jour"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_jour1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_moises1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.trimestre": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_trimestres1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_année": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.année"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hiérarchie_de_dates_have_années1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_date_de_publication_has_hiérarchie_de_date": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job.date_de_publication": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job.date_de_publication"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_de_publications_have_hiérarchie_de_dates1"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_lien_offre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.lien_offre": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.lien_offre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.lien_offre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_lien_offres"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_source": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.source": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.source"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.source"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_sources"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_salaire": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.salaire": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.salaire"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.salaire"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_salaires"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_region": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.region": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_regions"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_contrat": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.contrat": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.contrat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.contrat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_contrats"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_compétence": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.compétence": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.compétence"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.compétence"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_compétences"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_expérience": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.expérience": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.expérience"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.expérience"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_expériences"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_étude": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.étude": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.étude"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.étude"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_études"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_moises"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_année": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.année"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_années"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_date_de_publication": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.date_de_publication": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.date_de_publication"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.date_de_publication"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_date_de_publications"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_organisation": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.organisation": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.organisation"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.organisation"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_organisations"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_localité": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.localité": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.localité"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.localité"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_localité"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_has_poste": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.poste": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.poste"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.poste"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_have_poste"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_localité": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_localité": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_localité"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_localité"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_localité"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_mois": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.mois": {
+			          "Target": {
+			            "Entity": "merged_cm_job.mois"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.mois"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_moises"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_année": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.année": {
+			          "Target": {
+			            "Entity": "merged_cm_job.année"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.année"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_années"
+			        }
+			      ]
+			    },
+			    "D_poste_has_poste": {
+			      "Binding": {
+			        "ConceptualEntity": "D_poste"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_poste": {
+			          "Target": {
+			            "Entity": "D_poste"
+			          }
+			        },
+			        "D_poste.poste": {
+			          "Target": {
+			            "Entity": "D_poste.poste"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_poste"
+			            },
+			            "Object": {
+			              "Role": "D_poste.poste"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_poste_have_poste"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_contrat": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_contrat": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_contrat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_contrat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_contrat"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_metiers": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_metiers": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_metiers"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_metiers"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_metiers"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_nb_years": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.nb_years": {
+			          "Target": {
+			            "Entity": "merged_cm_job.nb_years"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.nb_years"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_nb_years"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_companies": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_companies": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_companies"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_companies"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_companies"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_etudes": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_etudes": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_etudes"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_etudes"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_etudes"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_compétences": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_compétences": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_compétences"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_compétences"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_compétences"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_distinct_companies": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_distinct_companies": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_distinct_companies"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_distinct_companies"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_distinct_companies"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_count_distinct_region": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.count_distinct_region": {
+			          "Target": {
+			            "Entity": "merged_cm_job.count_distinct_region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.count_distinct_region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_count_distinct_region"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_nombre_de_postes": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.nombre_de_postes": {
+			          "Target": {
+			            "Entity": "merged_cm_job.nombre_de_postes"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.nombre_de_postes"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_nombre_de_postes"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_postes_region": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.postes_region": {
+			          "Target": {
+			            "Entity": "merged_cm_job.postes_region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.postes_region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_postes_region"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_lien_offre": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.lien_offre": {
+			          "Target": {
+			            "Entity": "merged_cm_job.lien_offre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.lien_offre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_lien_offres"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_source": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.source": {
+			          "Target": {
+			            "Entity": "merged_cm_job.source"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.source"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_sources"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_salaire": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.salaire": {
+			          "Target": {
+			            "Entity": "merged_cm_job.salaire"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.salaire"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_salaires"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_region": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.region": {
+			          "Target": {
+			            "Entity": "merged_cm_job.region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_regions"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_contrat": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.contrat": {
+			          "Target": {
+			            "Entity": "merged_cm_job.contrat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.contrat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_contrats"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_compétence": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.compétence": {
+			          "Target": {
+			            "Entity": "merged_cm_job.compétence"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.compétence"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_compétences"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_expérience": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.expérience": {
+			          "Target": {
+			            "Entity": "merged_cm_job.expérience"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.expérience"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_expériences"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_étude": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.étude": {
+			          "Target": {
+			            "Entity": "merged_cm_job.étude"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.étude"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_études"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_date_de_publication": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.date_de_publication": {
+			          "Target": {
+			            "Entity": "merged_cm_job.date_de_publication"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.date_de_publication"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_date_de_publications"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_organisation": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.organisation": {
+			          "Target": {
+			            "Entity": "merged_cm_job.organisation"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.organisation"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_organisations"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_localité": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.localité": {
+			          "Target": {
+			            "Entity": "merged_cm_job.localité"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.localité"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_localité"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_has_poste": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job": {
+			          "Target": {
+			            "Entity": "merged_cm_job"
+			          }
+			        },
+			        "merged_cm_job.poste": {
+			          "Target": {
+			            "Entity": "merged_cm_job.poste"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "merged_cm_job"
+			            },
+			            "Object": {
+			              "Role": "merged_cm_job.poste"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_jobs_have_poste"
+			        }
+			      ]
+			    },
+			    "merged_cm_job_v_1_in_region": {
+			      "Binding": {
+			        "ConceptualEntity": "merged_cm_jobs_v1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "merged_cm_job_v_1": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1"
+			          }
+			        },
+			        "merged_cm_job_v_1.region": {
+			          "Target": {
+			            "Entity": "merged_cm_job_v_1.region"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "merged_cm_job_v_1.region"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "merged_cm_job_v_1"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "merged_cm_job_v_1.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "merged_cm_job_v_1_are_in_regions"
+			        }
+			      ]
+			    },
 			    "merged_cm_job_in_region": {
 			      "Binding": {
 			        "ConceptualEntity": "merged_cm_jobs"
@@ -1661,1128 +4853,6 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "merged_cm_jobs_are_in_regions"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_poste": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.poste": {
-			          "Target": {
-			            "Entity": "merged_cm_job.poste"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.poste"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_poste"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_localité": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.localité": {
-			          "Target": {
-			            "Entity": "merged_cm_job.localité"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.localité"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_localité"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_organisation": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.organisation": {
-			          "Target": {
-			            "Entity": "merged_cm_job.organisation"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.organisation"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_organisations"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_date_de_publication": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_date_de_publications"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_étude": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.étude": {
-			          "Target": {
-			            "Entity": "merged_cm_job.étude"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.étude"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_études"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_expérience": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.expérience": {
-			          "Target": {
-			            "Entity": "merged_cm_job.expérience"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.expérience"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_expériences"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_compétence": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.compétence": {
-			          "Target": {
-			            "Entity": "merged_cm_job.compétence"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.compétence"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_compétences"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_contrat": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.contrat": {
-			          "Target": {
-			            "Entity": "merged_cm_job.contrat"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.contrat"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_contrats"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_region": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.region": {
-			          "Target": {
-			            "Entity": "merged_cm_job.region"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_regions"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_salaire": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.salaire": {
-			          "Target": {
-			            "Entity": "merged_cm_job.salaire"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.salaire"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_salaires"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_source": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.source": {
-			          "Target": {
-			            "Entity": "merged_cm_job.source"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.source"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_sources"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_lien_offre": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.lien_offre": {
-			          "Target": {
-			            "Entity": "merged_cm_job.lien_offre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.lien_offre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_lien_offres"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_année": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.année": {
-			          "Target": {
-			            "Entity": "merged_cm_job.année"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_années"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_mois": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.mois": {
-			          "Target": {
-			            "Entity": "merged_cm_job.mois"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_moises"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_postes_region": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.postes_region": {
-			          "Target": {
-			            "Entity": "merged_cm_job.postes_region"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.postes_region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_postes_region"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_nombre_de_postes": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.nombre_de_postes": {
-			          "Target": {
-			            "Entity": "merged_cm_job.nombre_de_postes"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.nombre_de_postes"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_nombre_de_postes"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_distinct_region": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_distinct_region": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_distinct_region"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_distinct_region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_distinct_region"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_distinct_companies": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_distinct_companies": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_distinct_companies"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_distinct_companies"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_distinct_companies"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_compétences": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_compétences": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_compétences"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_compétences"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_compétences"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_etudes": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_etudes": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_etudes"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_etudes"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_etudes"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_companies": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_companies": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_companies"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_companies"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_companies"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_nb_years": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.nb_years": {
-			          "Target": {
-			            "Entity": "merged_cm_job.nb_years"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.nb_years"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_nb_years"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_has_count_metiers": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job": {
-			          "Target": {
-			            "Entity": "merged_cm_job"
-			          }
-			        },
-			        "merged_cm_job.count_metiers": {
-			          "Target": {
-			            "Entity": "merged_cm_job.count_metiers"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.count_metiers"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "merged_cm_jobs_have_count_metiers"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_has_hiérarchie_de_date": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_de_publications_have_hiérarchie_de_dates"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_année": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.année": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.année"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_années"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_trimestre": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.trimestre": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.trimestre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_trimestres"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_mois": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.mois": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.mois"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_moises"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_hiérarchie_de_date_has_merged_cm_job_date_de_publication_jour": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.jour": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.jour"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.jour"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_jour"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_année_has_merged_cm_job_date_de_publication_trimestre": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.année": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.année"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.trimestre": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.trimestre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.année"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "années_have_trimestres"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_have_années"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_are_in_années"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_trimestre_has_merged_cm_job_date_de_publication_mois": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.trimestre": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.trimestre"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.mois": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.mois"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_have_moises"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_have_trimestres"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_are_in_trimestres"
-			        }
-			      ]
-			    },
-			    "merged_cm_job_date_de_publication_mois_has_merged_cm_job_date_de_publication_jour": {
-			      "Binding": {
-			        "ConceptualEntity": "merged_cm_jobs"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "merged_cm_job.date_de_publication.mois": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.mois"
-			          }
-			        },
-			        "merged_cm_job.date_de_publication.jour": {
-			          "Target": {
-			            "Entity": "merged_cm_job.date_de_publication.jour"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.jour"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_have_jour"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.jour"
-			            },
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "jour_have_moises"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "merged_cm_job.date_de_publication.jour"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "merged_cm_job.date_de_publication.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "jour_are_in_moises"
 			        }
 			      ]
 			    }

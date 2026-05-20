@@ -10,11 +10,36 @@
       "nodes": [
         {
           "location": {
+            "x": 284,
+            "y": 98
+          },
+          "nodeIndex": "D_poste",
+          "nodeLineageTag": "2eac4228-c869-4de5-b1e7-1946ec78a778",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
             "x": 0,
             "y": 0
           },
           "nodeIndex": "merged_cm_jobs",
-          "nodeLineageTag": "cc8e0fff-0564-469f-ba1c-521497bab35b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 0
+          },
+          "nodeIndex": "merged_cm_jobs_v1",
+          "nodeLineageTag": "9650c9bd-389f-4e94-b251-e97ac611f507",
           "size": {
             "height": 300,
             "width": 234

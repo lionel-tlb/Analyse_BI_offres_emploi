@@ -3,3 +3,8 @@ relationship d694eb3c-63b4-4e09-a381-723a6a267157
 	fromColumn: merged_cm_jobs.'date de publication'
 	toColumn: LocalDateTable_179d40f8-346b-420c-9177-36a8c941aa0b.Date
 
+relationship 714456ce-ef92-42cd-af97-b2b827a3f147
+	joinOnDateBehavior: datePartOnly
+	fromColumn: merged_cm_jobs_v1.'date de publication'
+	toColumn: LocalDateTable_689be208-c277-4734-9f8d-a9e6224a675d.Date
+

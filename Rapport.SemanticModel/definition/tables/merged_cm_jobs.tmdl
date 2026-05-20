@@ -41,6 +41,10 @@ table merged_cm_jobs
 		formatString: 0
 		lineageTag: 87a18451-efc3-4395-b62d-2e0e320bdfcf
 
+	measure count_localité = COUNT(merged_cm_jobs[localité])
+		formatString: 0
+		lineageTag: 57d810aa-0092-4bb5-a3a6-6d550360c9d1
+
 	column poste
 		dataType: string
 		lineageTag: a7b71a44-f084-495e-b088-4cea3e76af9c
@@ -67,7 +71,7 @@ table merged_cm_jobs
 
 	column 'date de publication'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 69bb36a2-618c-4b28-a71c-08ffc1827947
 		summarizeBy: none
 		sourceColumn: date de publication
@@ -148,7 +152,7 @@ table merged_cm_jobs
 	column Année
 		dataType: int64
 		formatString: 0
-		lineageTag: 92b812dc-74a5-41ab-8e06-3153dc67bec9
+		lineageTag: fbbd2702-d5a1-4a5b-80cc-febd757995db
 		summarizeBy: sum
 		sourceColumn: Année
 
@@ -157,7 +161,7 @@ table merged_cm_jobs
 	column Mois
 		dataType: int64
 		formatString: 0
-		lineageTag: bb587218-b988-44e1-b018-3e1de1e75c93
+		lineageTag: c68397f2-d192-4930-ad3a-6415ce75e6e7
 		summarizeBy: sum
 		sourceColumn: Mois
 
@@ -165,257 +169,16 @@ table merged_cm_jobs
 
 	partition merged_cm_jobs = m
 		mode: import
-		source = ```
+		source =
 				let
-				    Source = Csv.Document(File.Contents(CheminProjet & "\data\merged_cm_jobs.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents(CheminProjet & "\data\merged_cm_jobs_v2.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"poste", type text}, {"localité", type text}, {"organisation", type text}, {"date de publication", type date}, {"études", type text}, {"expérience", type text}, {"compétence", type text}, {"contrat", type text}, {"region", type text}, {"salaire", type text}, {"source", type text}, {"lien offre", type text}}),
-				    #"Fractionner la colonne par délimiteur" = Table.ExpandListColumn(Table.TransformColumns(#"Type modifié", {{"region", Splitter.SplitTextByDelimiter("&", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "region"),
-				    #"Type modifié1" = Table.TransformColumnTypes(#"Fractionner la colonne par délimiteur",{{"region", type text}}),
-				    #"Valeur remplacée" = Table.ReplaceValue(#"Type modifié1","Emploi-international","International",Replacer.ReplaceText,{"region"}),
-				    #"Espaces supprimés" = Table.TransformColumns(#"Valeur remplacée",{{"region", Text.Trim, type text}}),
-				    #"Valeur remplacée1" = Table.ReplaceValue(#"Espaces supprimés","Adamoua","Adamaoua",Replacer.ReplaceText,{"region"}),
-				    #"Valeur remplacée2" = Table.ReplaceValue(#"Valeur remplacée1","...","Tout_le_cameroun",Replacer.ReplaceText,{"region"}),
-				    #"Espaces supprimés1" = Table.TransformColumns(#"Valeur remplacée2",{{"contrat", Text.Trim, type text}, {"poste", Text.Trim, type text}, {"localité", Text.Trim, type text}, {"organisation", Text.Trim, type text}, {"études", Text.Trim, type text}, {"expérience", Text.Trim, type text}, {"compétence", Text.Trim, type text}}),
-				    #"Espaces supprimés2" = Table.TransformColumns(#"Espaces supprimés1",{{"contrat", Text.Trim, type text}, {"region", Text.Trim, type text}, {"salaire", Text.Trim, type text}, {"source", Text.Trim, type text}, {"lien offre", Text.Trim, type text}}),
-				    #"Valeur remplacée3" = Table.ReplaceValue(#"Espaces supprimés2","Tout-le-cameroun","Tout_le_cameroun",Replacer.ReplaceText,{"region"}),
-				    #"Valeur remplacée4" = Table.ReplaceValue(#"Valeur remplacée3","Responsable commercial","Commercial",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée5" = Table.ReplaceValue(#"Valeur remplacée4","Commercial(e)","Commercial",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée6" = Table.ReplaceValue(#"Valeur remplacée5","Comptables","Comptable",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée7" = Table.ReplaceValue(#"Valeur remplacée6","Chauffeur professionnel","Chauffeur",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée8" = Table.ReplaceValue(#"Valeur remplacée7","02 chauffeurs","Chauffeur",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée9" = Table.ReplaceValue(#"Valeur remplacée8","03 chauffeurs","Chauffeur",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée10" = Table.ReplaceValue(#"Valeur remplacée9","Chauffeur - livreur","Chauffeur",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée11" = Table.ReplaceValue(#"Valeur remplacée10","Chauffeur / livreur","Livreur",Replacer.ReplaceText,{"poste"}),
-				    #"Transformation en Livreur 1" = Table.ReplaceValue(
-				    #"Valeur remplacée11",
-				    each[poste],
-				    each if Text.Contains([poste], "Chauffeur", Comparer.OrdinalIgnoreCase)
-				         and Text.Contains([poste], "livreur", Comparer.OrdinalIgnoreCase)
-				         then "Livreur"  else [poste],
-				         Replacer.ReplaceValue,
-				         {"poste"}
-				    ),
-				    
-				    Normalisation_Chauffeur_1 = Table.ReplaceValue(
-				        #"Transformation en Livreur 1",
-				        each [poste],
-				        each if Text.Contains([poste], "Avis de recrutement des chauffeurs", Comparer.OrdinalIgnoreCase)
-				            then "Chauffeur"
-				            else [poste],
-				        Replacer.ReplaceValue,
-				        {"poste"}
-				        ),
-				    #"Espaces supprimés3" = Table.TransformColumns(Normalisation_Chauffeur_1,{{"poste", Text.Trim, type text}}),
-				    #"Valeur remplacée12" = Table.ReplaceValue(#"Espaces supprimés3","Emploi-international","International",Replacer.ReplaceText,{"localité"}),
-				    #"Normalisation_coursier" = Table.TransformColumns(
-				        #"Valeur remplacée12",
-				        {{"poste", each fn_normalize_job_1(_, {"coursier"}, "Coursier", true)}}
-				     ),
-				    #"Fractionner la colonne par délimiteur1" = Table.ExpandListColumn(Table.TransformColumns(Normalisation_coursier, {{"poste", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "poste"),
-				    #"Type modifié2" = Table.TransformColumnTypes(#"Fractionner la colonne par délimiteur1",{{"poste", type text}}),
-				    #"Fractionner la colonne par délimiteur2" = Table.ExpandListColumn(Table.TransformColumns(#"Type modifié2", {{"poste", Splitter.SplitTextByDelimiter(" et ", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "poste"),
-				    #"Type modifié3" = Table.TransformColumnTypes(#"Fractionner la colonne par délimiteur2",{{"poste", type text}}),
-				    // #"Doublons supprimés" = Table.Distinct(#"Type modifié3", {"poste"}),
-				    #"Normalisation_Stagiaire" = Table.TransformColumns(#"Type modifié3", {{"poste", each fn_normalize_job_1(_, {"stagiaire"}, "Stagiaire", true)}}),
-				    #"Normalisation_Secrétaire" = Table.TransformColumns(#"Normalisation_Stagiaire", {{"poste", each fn_normalize_job_1(_, {"secr", "sécr"}, "Secrétaire", false)}}),
-				    #"Normalisation_Comptable" = Table.TransformColumns(#"Normalisation_Secrétaire", {{"poste", each fn_normalize_job_1(_, {"comptable"}, "Comptable", true)}}),
-				    #"Normalisation_Chauffeur" = Table.TransformColumns(#"Normalisation_Comptable", {{"poste", each fn_normalize_job_1(_, {"chauffeur"}, "Chauffeur", true)}}),
-				    #"Normalisation_Commercial" = Table.TransformColumns(#"Normalisation_Chauffeur", {{"poste", each fn_normalize_job_1(_, {"commerc"}, "Commercial", true)}}),
-				    #"Normalisation_Responsable_Marketing" = Table.TransformColumns(#"Normalisation_Commercial", {{"poste", each fn_normalize_job_1(_, {"marketing"}, "Responsable marketing", true)}}),
-				    #"Normalisation_Assistant_direction" = Table.TransformColumns(#"Normalisation_Responsable_Marketing", {{"poste", each fn_normalize_job_1(_, {"assistant", "dir"}, "Assistant(e) de direction", true)}}),
-				    #"Normalisation_Cuisinier" = Table.TransformColumns(#"Normalisation_Assistant_direction", {{"poste", each fn_normalize_job_1(_, {"cuisin"}, "Cuisinier", true)}}),
-				    #"Normalisation_Designer" = Table.TransformColumns(#"Normalisation_Cuisinier", {{"poste", each fn_normalize_job_1(_, {"design"}, "Designer graphique", true)}}),
-				    #"Normalisation_Développeur_web_1" = Table.TransformColumns(#"Normalisation_Designer", {{"poste", each fn_normalize_job_1(_, {"dev", "web"}, "Développeur web", true)}}),
-				    #"Normalisation_Développeur_web_2" = Table.TransformColumns(#"Normalisation_Développeur_web_1", {{"poste", each fn_normalize_job_1(_, {"dév", "web"}, "Développeur web", true)}}),
-				    #"Normalisation_Commercial_2" = Table.TransformColumns(#"Normalisation_Développeur_web_2", {{"poste", each fn_normalize_job_1(_, {"agent", "vente"}, "Commercial", true)}}),
-				    #"Normalisation_Assistant(e)_direction_2" = Table.TransformColumns(#"Normalisation_Commercial_2", {{"poste", each fn_normalize_job_1(_, {"assistant"}, "Assistant(e) de direction", true)}}),
-				    #"Normalisation_Comptable_3" = Table.TransformColumns(#"Normalisation_Assistant(e)_direction_2", {{"poste", each fn_normalize_job_1(_, {"accountant"}, "Comptable", true)}}),
-				    #"Normalisation_Commercial_3" = Table.TransformColumns(#"Normalisation_Comptable_3", {{"poste", each fn_normalize_job_1(_, {"vend"}, "Commercial", true)}}),
-				    #"Normalisation_Poste_disponible" = Table.TransformColumns(#"Normalisation_Commercial_3", {{"poste", each fn_normalize_job_1(_, {"poste", "non précisé"}, "Poste disponible", false)}}),
-				    #"Normalisation_Journaliste_1" = Table.TransformColumns(#"Normalisation_Poste_disponible", {{"poste", each fn_normalize_job_1(_, {"journal"}, "Journaliste tv/web", true)}}),
-				    #"Normalisation_Consultant_1" = Table.TransformColumns(#"Normalisation_Journaliste_1", {{"poste", each fn_normalize_job_1(_, {"consult"}, "Consultant", true)}}),
-				    #"Normalisation_Business_developer" = Table.TransformColumns(#"Normalisation_Consultant_1", {{"poste", each fn_normalize_job_1(_, {"dev", "busi"}, "Business developer", true)}}),
-				    #"Normalisation_Gestionnaire_projet" = Table.TransformColumns(#"Normalisation_Business_developer", {{"poste", each fn_normalize_job_1(_, {"manager"}, "Gestionnaire de projet", true)}}),
-				    #"Normalisation_Officier_suivi" = Table.TransformColumns(#"Normalisation_Gestionnaire_projet", {{"poste", each fn_normalize_job_1(_, {"officier"}, "Officier de suivi", true)}}),
-				    #"Normalisation_Créateur_contenu" = Table.TransformColumns(#"Normalisation_Officier_suivi", {{"poste", each fn_normalize_job_1(_, {"contenu"}, "Créateur(trice) de contenu", true)}}),
-				    #"Normalisation_Chef_agence" = Table.TransformColumns(#"Normalisation_Créateur_contenu", {{"poste", each fn_normalize_job_1(_, {"agence"}, "Chef d'agence", true)}}),
-				    #"Espaces supprimés4" = Table.TransformColumns(Normalisation_Chef_agence,{{"poste", Text.Trim, type text}}),
-				    #"Erreurs supprimées" = Table.RemoveRowsWithErrors(#"Espaces supprimés4", {"poste"}),
-				    #"Lignes filtrées" = Table.SelectRows(#"Erreurs supprimées", each ([poste] <> "" and [poste] <> "/ ou certifiantes﻿" and [poste] <> "b (h/f)" and [poste] <> "bertoua" and [poste] <> "d-1" and [poste] <> "douala" and [poste] <> "garoua" and [poste] <> "garoua." and [poste] <> "la formation" and [poste] <> "Ll" and [poste] <> "maroua" and [poste] <> "yaounde" and [poste] <> "yaoundé")),
-				    #"Normalisation_Médecin" = Table.TransformColumns(#"Lignes filtrées", {{"poste", each fn_normalize_job_1(_, {"medecin", "médecin", "médécin"}, "Médecin", false)}}),
-				    #"Normalisation_Boulanger" = Table.TransformColumns(#"Normalisation_Médecin", {{"poste", each fn_normalize_job_1(_, {"boulanger"}, "Boulanger", true)}}),
-				    #"Retrait_nombres" = Table.TransformColumns(#"Normalisation_Boulanger", {{"poste", each Text.Remove(_, {"0".."9"})}}),
-				    #"Espaces supprimés5" = Table.TransformColumns(Retrait_nombres,{{"poste", Text.Trim, type text}}),
-				    #"Lignes triées" = Table.Sort(#"Espaces supprimés5",{{"poste", Order.Ascending}}),
-				    #"Premières lignes supprimées" = Table.Skip(#"Lignes triées",23),
-				    #"Valeur remplacée13" = Table.ReplaceValue(#"Premières lignes supprimées","Administrateur de base de donnees (dba)","Administrateur de base de donnees",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée14" = Table.ReplaceValue(#"Valeur remplacée13","Agent de caisse / caissière","Agent de caisse",Replacer.ReplaceText,{"poste"}),
-				    #"Normalisation_Admin_db" = Table.TransformColumns(#"Valeur remplacée14", {{"poste", each fn_normalize_job_1(_, {"base de donnée", "base de donnee", "bases de donnée", "bases de donnee"}, "Administrateur de base de données", false)}}),
-				    #"Nettoyage_HF" = Table.ReplaceValue(#"Normalisation_Admin_db", "(h/f)", "", Replacer.ReplaceText, {"poste"}),
-				    #"Nettoyage_HF_2" = Table.ReplaceValue(#"Nettoyage_HF", "h/f", "", Replacer.ReplaceText, {"poste"}),
-				    #"Remove_chars" = Table.TransformColumns(#"Nettoyage_HF_2", {
-				        {"poste", each if _ <> null then Text.Trim(Text.Remove(_, {"0".."9", "!", ".", "?", "*", "=", "+", "."})) else _}
-				        }),
-				    #"Nettoyage_MF" = Table.ReplaceValue(#"Remove_chars", "(m/f)", "", Replacer.ReplaceText, {"poste"}),
-				    #"Nettoyage_MF_2" = Table.ReplaceValue(#"Nettoyage_MF", "m/f", "", Replacer.ReplaceText, {"poste"}),
-				    #"Lignes filtrées1" = Table.SelectRows(Nettoyage_MF_2, each true),
-				    #"Lignes triées1" = Table.Sort(#"Lignes filtrées1",{{"poste", Order.Ascending}}),
-				    #"Valeur remplacée15" = Table.ReplaceValue(#"Lignes triées1","Avis de recrutement des caissières douala – yaoundé – bafoussam – kribi","Caissière",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée16" = Table.ReplaceValue(#"Valeur remplacée15","Campagne de stages  douala - yaoundé - bafoussam - garoua","Stagiaire",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée17" = Table.ReplaceValue(#"Valeur remplacée16","Request for proposal (rfp): purchase of office open equipements; bafoussam","Commercial",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée18" = Table.ReplaceValue(#"Valeur remplacée17","Jobs opportunities : sales executive - yaoundé and bafoussam","Commercial",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée19" = Table.ReplaceValue(#"Valeur remplacée18","Avis de recrutement des agents de recouvrement  yaoundé bafoussam","Agent de recouvrement",Replacer.ReplaceText,{"poste"}),
-				    Exclusions = {"douala", "yaounde", "yaoundé", "buea", "buéa", "bafoussam", "sud", "bamenda", "ngaoundere", "ngaoundéré", "ngaoundére", "ngaounderé", "bertoua", "avis", "appel", "recrutement", "offre"},
-				    #"Lignes filtrées2" = Table.SelectRows(#"Valeur remplacée19", each not List.AnyTrue(List.Transform(Exclusions, (mot) => Text.Contains(Text.Lower([poste]), mot)))),
-				    #"Espaces supprimés6" = Table.TransformColumns(#"Lignes filtrées2",{{"poste", Text.Trim, type text}}),
-				    #"Valeur remplacée20" = Table.ReplaceValue(#"Espaces supprimés6","Driver","Chauffeur",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée21" = Table.ReplaceValue(#"Valeur remplacée20","Erreur","Poste disponible",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée22" = Table.ReplaceValue(#"Valeur remplacée21","Error","Poste disponible",Replacer.ReplaceText,{"poste"}),
-				    #"Valeur remplacée23" = Table.ReplaceValue(#"Valeur remplacée22","ENTREPRISE DE LA PLACE CAMEROUN","ENTREPRISE DE LA PLACE",Replacer.ReplaceText,{"organisation"}),
-				    #"Nettoyage_courte_offres" = Table.SelectRows(#"Valeur remplacée23", each Text.Length([poste]) >= 7),
-				
-				    // Daril -- replacement
-				    #"ValueReplacement" = Table.ReplaceValue(#"Nettoyage_courte_offres","Qualification avant bac, Bac, Bac+1, Bac+2, Bac+3, Bac+4 & Bac+5 et plus","bac, Bac, Bac+1, Bac+2, Bac+3, Bac+4 & Bac+5 et plus",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement1" = Table.ReplaceValue(#"ValueReplacement","Qualification avant bac","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement2" = Table.ReplaceValue(#"ValueReplacement1","Bac","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement3" = Table.ReplaceValue(#"ValueReplacement2","BAC & BAC","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement4" = Table.ReplaceValue(#"ValueReplacement3","BAC+1 & BAC+2","BAC+1",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement5" = Table.ReplaceValue(#"ValueReplacement4","BAC+2 & BAC+3","BAC+2",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement6" = Table.ReplaceValue(#"ValueReplacement5","BAC+1, BAC+2, BAC+3, BAC+4 & BAC+5 et plus","BAC+1",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement7" = Table.ReplaceValue(#"ValueReplacement6","bac, BAC, BAC+1","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement8" = Table.ReplaceValue(#"ValueReplacement7","BAC, BAC, BAC+1, BAC+2","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement9" = Table.ReplaceValue(#"ValueReplacement8","BAC, BAC+3 & BAC+4","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement10" = Table.ReplaceValue(#"ValueReplacement9","BAC, BAC, BAC+1","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement11" = Table.ReplaceValue(#"ValueReplacement10","BAC, BAC+1","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement12" = Table.ReplaceValue(#"ValueReplacement11","BAC, BAC+2","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement13" = Table.ReplaceValue(#"ValueReplacement12","BAC, BAC+3, BAC+4 - BAC+5 et plus","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement14" = Table.ReplaceValue(#"ValueReplacement13","BAC, BAC+3 & BAC+4","BAC",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement15" = Table.ReplaceValue(#"ValueReplacement14","BAC+1","BAC+1",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement16" = Table.ReplaceValue(#"ValueReplacement15","BAC+1, BAC+2, BAC+3 - BAC+4","BAC+1",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement17" = Table.ReplaceValue(#"ValueReplacement16","BAC+1, BAC+2","BAC+1",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement18" = Table.ReplaceValue(#"ValueReplacement17","BAC+2, BAC+3, BAC+4 & BAC+5 et plus","BAC+2",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement19" = Table.ReplaceValue(#"ValueReplacement18","BAC+3, BAC+4 & BAC+5 et plus","BAC+3",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement20" = Table.ReplaceValue(#"ValueReplacement19","BAC+4 & BAC+5 et plus","BAC+4",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement21" = Table.ReplaceValue(#"ValueReplacement20","BAC+5 et plus","BAC+5",Replacer.ReplaceText,{"études"}),
-				    #"ValueReplacement22" = Table.ReplaceValue(#"ValueReplacement21","Etudiant, jeune diplômé et plus","Etudiant",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement23" = Table.ReplaceValue(#"ValueReplacement22","Etudiant, jeune diplômé","Etudiant",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement24" = Table.ReplaceValue(#"ValueReplacement23","Débutant < 2 ans et plus","Minimum 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement25" = Table.ReplaceValue(#"ValueReplacement24","Débutant < 2 ans","Aumoins 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement26" = Table.ReplaceValue(#"ValueReplacement25","Expérience entre 5 ans et 10 ans","Minimum 5 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement27" = Table.ReplaceValue(#"ValueReplacement26","Minimum 5 ans & Expérience > 10 ans","Minimum 5 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement28" = Table.ReplaceValue(#"ValueReplacement27","Expérience entre 2 ans et 5 ans","Minimum 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement29" = Table.ReplaceValue(#"ValueReplacement28","Minimum 2 ans et plus","Minimum 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement30" = Table.ReplaceValue(#"ValueReplacement29","Expérience > 10 ans","Minimum 10 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement31" = Table.ReplaceValue(#"ValueReplacement30","Minimum 2 ans & Minimum 5 ans","Minimum 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement32" = Table.ReplaceValue(#"ValueReplacement31","Etudiant & Aumoins 2 ans","Etudiant",Replacer.ReplaceText,{"expérience"}),
-				    #"ValueReplacement33" = Table.ReplaceValue(#"ValueReplacement32","Aumoins 2 ans & Minimum 2 ans","Aumoins 2 ans",Replacer.ReplaceText,{"expérience"}),
-				    #"Texte en majuscules" = Table.TransformColumns(#"ValueReplacement33",{{"compétence", Text.Upper, type text}, {"expérience", Text.Upper, type text}}),
-				    #"ValueReplacement36" = Table.ReplaceValue(#"Texte en majuscules","SANTE","SANTÉ",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement34" = Table.ReplaceValue(#"ValueReplacement36","SOINS INFIRMIERS","SANTÉ",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement35" = Table.ReplaceValue(#"ValueReplacement34","SAP","ABAP-SAP",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement37" = Table.ReplaceValue(#"ValueReplacement35","ABAP - ABAP-SAP","ABAP-SAP",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement38" = Table.ReplaceValue(#"ValueReplacement37","ABAP-SAP","REACH-ABAP-SAP",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement39" = Table.ReplaceValue(#"ValueReplacement38","REACH - REACH-ABAP-SAP","REACH-ABAP-SAP",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement40" = Table.ReplaceValue(#"ValueReplacement39","ACTIONS COMMERCIALES - VENTE","VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement41" = Table.ReplaceValue(#"ValueReplacement40","AGILE - CVS","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement42" = Table.ReplaceValue(#"ValueReplacement41","AMÉLIORATION CONTINUE","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement43" = Table.ReplaceValue(#"ValueReplacement42","ASSISTANAT - ÉDITION - SECRÉTARIAT","ASSISTANAT - SECRÉTARIAT - SUPPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement44" = Table.ReplaceValue(#"ValueReplacement43","ASSISTANAT - SECRÉTARIAT","ASSISTANAT - SECRÉTARIAT - SUPPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement45" = Table.ReplaceValue(#"ValueReplacement44","ASSISTANAT - WORD","ASSISTANAT - SECRÉTARIAT - SUPPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement46" = Table.ReplaceValue(#"ValueReplacement45","ASSISTANAT - SECRÉTARIAT - SUPPORT - VENTE","ASSISTANAT - SECRÉTARIAT - SUPPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement47" = Table.ReplaceValue(#"ValueReplacement46","ASSISTANAT - SECRÉTARIAT - SUPPORT - SUPPORT","ASSISTANAT - SECRÉTARIAT - SUPPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement48" = Table.ReplaceValue(#"ValueReplacement47","AZURE - LINUX","AZURE-LINUX-CVS-DOCKER",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement49" = Table.ReplaceValue(#"ValueReplacement48","AZURE-LINUX-CVS-DOCKER","AZURE-CVS-DOCKER-LINUX",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement50" = Table.ReplaceValue(#"ValueReplacement49","AZURE-CVS-DOCKER-LINUX","AZURE - CVS - DOCKER - LINUX",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement51" = Table.ReplaceValue(#"ValueReplacement50","TRANSPORT","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement52" = Table.ReplaceValue(#"ValueReplacement51","SÉCURITÉ ROUTIÈRE - SÉCURITÉ ROUTIÈRE - TRANSPORT","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement53" = Table.ReplaceValue(#"ValueReplacement52","PROSPECTION - VENTE","PROSPECTION - RECOUVREMENT - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement54" = Table.ReplaceValue(#"ValueReplacement53","PROSPECTION","PROSPECTION - RECOUVREMENT - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement55" = Table.ReplaceValue(#"ValueReplacement54","PROSPECTION - RECOUVREMENT - VENTE - RECOUVREMENT - VENTE","PROSPECTION - RECOUVREMENT - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement56" = Table.ReplaceValue(#"ValueReplacement55","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement57" = Table.ReplaceValue(#"ValueReplacement56","NÉGOCIATION - SÉCURITÉ ROUTIÈRE - TRANSPORT - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement58" = Table.ReplaceValue(#"ValueReplacement57","NÉGOCIATION - NÉGOCIATION COMMERCIALE - PROSPECTION - RECOUVREMENT - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement59" = Table.ReplaceValue(#"ValueReplacement58","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement61" = Table.ReplaceValue(#"ValueReplacement59","NÉGOCIATION - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE - TECHNIQUES DE VENTE - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement60" = Table.ReplaceValue(#"ValueReplacement61","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement62" = Table.ReplaceValue(#"ValueReplacement60","PROSPECTION - RECOUVREMENT - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement63" = Table.ReplaceValue(#"ValueReplacement62","NÉGOCIATION - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - TECHNIQUES DE VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement64" = Table.ReplaceValue(#"ValueReplacement63","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - TECHNIQUES DE VENTE - VENTE","NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement65" = Table.ReplaceValue(#"ValueReplacement64","BTP","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement66" = Table.ReplaceValue(#"ValueReplacement65","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE - CÂBLAGE - CLIMATISATION - DOMOTIQUE - ÉCLAIRAGE - ÉNERGIE - ÉNERGIE ÉLECTRIQUE - GÉNIE ÉLECTRIQUE","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement67" = Table.ReplaceValue(#"ValueReplacement66","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE - SECTEUR BTP - CONSTRUCTION - EXPERTISE TECHNIQUE","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement68" = Table.ReplaceValue(#"ValueReplacement67","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE - CONSTRUCTION - EXPERTISE TECHNIQUE","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement69" = Table.ReplaceValue(#"ValueReplacement68","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE - HYDRAULIQUE","BTP - CONSTRUCTION - EXPERTISE TECHNIQUE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement70" = Table.ReplaceValue(#"ValueReplacement69","COMPTABILITÉ - FINANCE - FORMATION - GESTION - GESTION D'ÉQUIPE - PROJETS RH - RECRUTEMENT","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement71" = Table.ReplaceValue(#"ValueReplacement70","COMPTABILITÉ - FINANCE - GESTION - MANAGEMENT - MICROFINANCE - VENTE","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement72" = Table.ReplaceValue(#"ValueReplacement71","COMPTABILITÉ - ÉTATS FINANCIERS - FINANCE - GESTION","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement73" = Table.ReplaceValue(#"ValueReplacement72","COMPTABILITÉ - FINANCE - FINANCEMENT - GESTION - STATA","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement74" = Table.ReplaceValue(#"ValueReplacement73","COMPTABILITÉ - FINANCE - FORECASTING - GESTION","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement75" = Table.ReplaceValue(#"ValueReplacement74","COMPTABILITÉ - FINANCE - GESTION","COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement76" = Table.ReplaceValue(#"ValueReplacement75","COMMUNICATION - MARKETING - VENTE","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement77" = Table.ReplaceValue(#"ValueReplacement76","COMMUNICATION - MARKETING - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement78" = Table.ReplaceValue(#"ValueReplacement77","COMMUNICATION - DÉVELOPPEMENT COMMERCIAL - MARKETING - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE TERRAIN - PUBLICITÉ - VENTE","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement79" = Table.ReplaceValue(#"ValueReplacement78","COMMUNICATION - FACEBOOK ADS - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement80" = Table.ReplaceValue(#"ValueReplacement79","COMMUNICATION - COMMUNICATION RH - FORMATION - MARKETING - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement81" = Table.ReplaceValue(#"ValueReplacement80","COMMUNICATION - COMMUNICATION DIGITALE - E-COMMERCE - MARKETING - MARKETING DIGITAL - SEA - SEO - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement82" = Table.ReplaceValue(#"ValueReplacement81","COMMUNICATION - MARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement83" = Table.ReplaceValue(#"ValueReplacement82","COMMUNICATION - DESIGN - EMBALLAGE - MAINTENANCE - MARKETING - PACKAGING - PROCESSUS - PRODUCTION - QUALITÉ - SOLIDWORKS","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement84" = Table.ReplaceValue(#"ValueReplacement83","COMMUNICATION - COMMUNICATION DIGITALE - MARKETING - RÉFÉRENCEMENT WEB - TÉLÉMARKETING - WEB COMMUNICATION - WEB COMMUNITY","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement85" = Table.ReplaceValue(#"ValueReplacement84","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - CRÉATION GRAPHIQUE - DESIGN - ILLUSTRATOR - MARKETING - PHOTOSHOP - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement86" = Table.ReplaceValue(#"ValueReplacement85","COMMUNICATION - COMMUNICATION MARKETING - EMAILING - MARKETING - MARKETING DIGITAL - SEO","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement87" = Table.ReplaceValue(#"ValueReplacement86","COMMUNICATION - COMMUNICATION MARKETING - COMMUNICATION RH - MARKETING - MÉDIAS - TÉLÉMARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement88" = Table.ReplaceValue(#"ValueReplacement87","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - PUBLICITÉ","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceValue,{"compétence"}),
-				    #"ValueReplacement89" = Table.ReplaceValue(#"ValueReplacement88","COMMUNICATION - CRM - MARKETING - MARKETING DES VENTES - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE MARKETING - TÉLÉMARKETING - VENTE","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement90" = Table.ReplaceValue(#"ValueReplacement89","COMMUNICATION - FIDÉLISATION DES CLIENTS - MARKETING - VENTE","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement91" = Table.ReplaceValue(#"ValueReplacement90","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement92" = Table.ReplaceValue(#"ValueReplacement91","COMMUNICATION - FIDÉLISATION DES CLIENTS - MARKETING - NÉGOCIATION - VENTE","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement93" = Table.ReplaceValue(#"ValueReplacement92","COMMUNICATION","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement94" = Table.ReplaceValue(#"ValueReplacement93","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement95" = Table.ReplaceValue(#"ValueReplacement94","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - STRATÉGIE MARKETING","COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement96" = Table.ReplaceValue(#"ValueReplacement95","HYGIÈNE - SANTÉ - SANTÉ","ÉDUCATION - HYGIÈNE - SANTÉ",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement97" = Table.ReplaceValue(#"ValueReplacement96","SÉCURISATION - SÉCURITÉ - SURVEILLANCE - SÉCURITÉ ROUTIÈRE - TRANSPORT - SÉCURITÉ ROUTIÈRE - TRANSPORTATION","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement98" = Table.ReplaceValue(#"ValueReplacement97","ACHATS - COMPTABILITÉ - DISTRIBUTION - FINANCE - GESTION - VENTE","ACHATS - COMPTABILITÉ - CONSULTATION - FINANCE - GESTION - LABORATOIRE D'ANALYSE - SANTÉ - SOINS MÉDICAUX",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement99" = Table.ReplaceValue(#"ValueReplacement98","ACHATS - COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT - VENTE","ACHATS - COMPTABILITÉ - CONSULTATION - FINANCE - GESTION - LABORATOIRE D'ANALYSE - SANTÉ - SOINS MÉDICAUX",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement100" = Table.ReplaceValue(#"ValueReplacement99","ADMINISTRATION - ASSISTANAT - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - DOSSIERS - DOSSIERS ADMINISTRATIFS - MARKETING - RÉDACTION - SECRÉTARIAT - SUIVI DES DOSSIERS","ADMINISTRATION - ASSISTANAT - DOCUMENTS ADMINISTRATIFS - DOSSIERS - SECRÉTARIAT - SUIVI DES DOSSIERS - SUPPORT - WORD",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement101" = Table.ReplaceValue(#"ValueReplacement100","MARKETING AUDIOVISUEL","MARKETING",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement102" = Table.ReplaceValue(#"ValueReplacement101","MAINTENANCE - PRODUCTION - QUALITÉ","MAINTENANCE - MAINTENANCE CURATIVE - PRODUCTION - QUALITÉ - RÉPARATION",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement103" = Table.ReplaceValue(#"ValueReplacement102","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - EMAILING - MARKETING - MARKETING DIGITAL - SEO","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - GESTION MARKETING",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement104" = Table.ReplaceValue(#"ValueReplacement103","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - DIGITAL MARKETING - EMAILING - FACEBOOK ADS - MARKETING - MARKETING DIGITAL - NEWSLETTERS - SEO","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - GESTION MARKETING",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement105" = Table.ReplaceValue(#"ValueReplacement104","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - GESTION MARKETING - MARKETING","ACTIONS MARKETING - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - GESTION MARKETING",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement106" = Table.ReplaceValue(#"ValueReplacement105","ENTRETIEN - SÉCURITÉ ROUTIÈRE - TRANSPORT","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement107" = Table.ReplaceValue(#"ValueReplacement106","EXPÉDITION - GESTION DES STOCKS - MAGASINAGE - STOCKS - SÉCURITÉ ROUTIÈRE - TRANSPORTATION","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement108" = Table.ReplaceValue(#"ValueReplacement107","EXPÉDITION - MAINTENANCE - MANUTENTION - PRODUCTION - QUALITÉ - SÉCURITÉ ROUTIÈRE - TRANSPORT - USINAGE","SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement109" = Table.ReplaceValue(#"ValueReplacement108","ACHATS - APPROVISIONNEMENTS - EXPORT - GESTION DES ACHATS - GESTION DES CONTRATS - IMPORT - LIVRAISON - NÉGOCIATION - PROCUREMENT - SUPPLY - SUPPLY CHAIN - SÉCURITÉ ROUTIÈRE - TRANSPORT","ACHATS - APPROVISIONNEMENTS - CHAÎNE LOGISTIQUE - DISTRIBUTION - ENTREPÔT - LIVRAISON - NÉGOCIATION - PRESTATION LOGISTIQUE - SOURCING - SUPPLY - SUPPLY CHAIN - SÉCURITÉ ROUTIÈRE - TRANSPORT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement110" = Table.ReplaceValue(#"ValueReplacement109","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT - GIT - MERCURIAL - REST - SCRUM - SWIFT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement111" = Table.ReplaceValue(#"ValueReplacement110","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT - GIT - MERCURIAL - REST - SCRUM - SWIFT - GIT - MERCURIAL - REST - SCRUM - SWIFT","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT - GIT - MERCURIAL - REST - SCRUM - SWIFT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement112" = Table.ReplaceValue(#"ValueReplacement111","BOOTSTRAP - CSS3 - CVS - DOCKER - GIT - JAVASCRIPT - JIRA - JQUERY - JSON - LESS - MONGODB - MVC - MYSQL - NODE JS - NOSQL - POSTGRESQL - REACT - REDIS - REST - SQL - XML","BOOTSTRAP - CSS3 - CVS - GIT - JAVASCRIPT - JQUERY - LESS - MVC - MYSQL - REST",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement113" = Table.ReplaceValue(#"ValueReplacement112","BOOTSTRAP - CSS - CVS - GIT - JAVA - JAVASCRIPT - JQUERY - LESS - REACT","BOOTSTRAP - CSS3 - CVS - GIT - JAVASCRIPT - JQUERY - LESS - MVC - MYSQL - REST",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement114" = Table.ReplaceValue(#"ValueReplacement113","ACCESS - AGILE - AZURE - CVS - DOCKER","ACCESS - AGILE - ARM - AZURE - COSMOS - CVS - PAAS - REDIS - SHELL - SQL",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement115" = Table.ReplaceValue(#"ValueReplacement114","ACCUEIL - ASSISTANAT - BUREAUTIQUE - COMMUNICATION - COMMUNICATION DIGITALE - COMMUNITY MANAGEMENT - MARKETING - MARKETING DIGITAL - DOCUMENTS ADMINISTRATIFS - GESTION ADMINISTRATIVE - ORGANISATION ADMINISTRATIVE - PACK OFFICE - SECRÉTARIAT","ACCUEIL - ASSISTANCE - ÉVÈNEMENTIEL - NETTOYAGE - SÉCURITÉ - SURVEILLANCE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement116" = Table.ReplaceValue(#"ValueReplacement115","ACCUEIL - ANIMATION - ENTRETIEN - SÉCURITÉ - SURVEILLANCE","ACCUEIL - ASSISTANCE - ÉVÈNEMENTIEL - NETTOYAGE - SÉCURITÉ - SURVEILLANCE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement117" = Table.ReplaceValue(#"ValueReplacement116","ASSEMBLEUR - COBOL - JAVA - LDAP - NETVIEW - TCP IP - TWS - VTAM","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement118" = Table.ReplaceValue(#"ValueReplacement117","CHARGEMENT","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement119" = Table.ReplaceValue(#"ValueReplacement118","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM - DÉASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM - DOMAINE DU SÉCURITÉ ROUTIÈRE - TRANSPORT - ENTREPÔT - GESTION D'ENTREPÔT - SÉCURITÉ ROUTIÈRE - TRANSPORT","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement120" = Table.ReplaceValue(#"ValueReplacement119","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM - DÉASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM - DISTRIBUTION - GESTION LOGISTIQUE - LOGISTIQUE DE DISTRIBUTION - SÉCURITÉ ROUTIÈRE - TRANSPORT - VENTE","ASSEMBLEUR - COBOL - DB2 - FORTRAN - ISPF - JCL - SAS - SDSF - TCP IP - TSO - TWS - VSAM",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement121" = Table.ReplaceValue(#"ValueReplacement120","AGILE - CVS - GIT - MERCURIAL - REST - SCRUM - SWIFT - GIT - MERCURIAL - REST - SCRUM - SWIFT","AGILE - CSS - CVS - DOCKER - GIT - HTML - JAVASCRIPT - JIRA - JQUERY - MONGODB - MYSQL - POSTGRESQL - RUBY ON RAILS",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement122" = Table.ReplaceValue(#"ValueReplacement121","AGILE - CSS - CVS - DOCKER - GIT - HTML - JAVASCRIPT - JIRA - JQUERY - MONGODB - MYSQL - POSTGRESQL - RUBY ON RAILS","AGILE - CSS - CVS - DOCKER - GIT - HTML - JAVASCRIPT - JIRA - JQUERY - MONGODB - MYSQL - POSTGRESQL - RUBY ON RAILS",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement123" = Table.ReplaceValue(#"ValueReplacement122","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT - GESTION - LEADERSHIP - MANAGEMENT",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement124" = Table.ReplaceValue(#"ValueReplacement123","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT - GESTION - LEADERSHIP - MANAGEMENT - GESTION - LEADERSHIP - MANAGEMENT","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT - GESTION",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement125" = Table.ReplaceValue(#"ValueReplacement124","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT - GESTION - LEADERSHIP - MANAGEMENT","AMÉLIORATION CONTINUE - GESTION - LEADERSHIP - MANAGEMENT - GESTION",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement126" = Table.ReplaceValue(#"ValueReplacement125","CRM - DÉVELOPPEMENT COMMERCIAL - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE - NÉGOCIATION - PROSPECTION - RECOUVREMENT - VENTE - TECHNIQUES DE VENTE TERRAIN - VENTE","CRM - DÉVELOPPEMENT COMMERCIAL - DEVIS - NÉGOCIATION - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement127" = Table.ReplaceValue(#"ValueReplacement126","CRM - MERCHANDISING - NÉGOCIATION - TECHNIQUES DE VENTE - VENTE","CRM - DÉVELOPPEMENT COMMERCIAL - DEVIS - NÉGOCIATION - TECHNIQUES DE VENTE - VENTE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement128" = Table.ReplaceValue(#"ValueReplacement127","AUDIT - COMPTABILITÉ - FACTURATION - FINANCE - GESTION - ORGANISATION ADMINISTRATIVE - ORGANISATION D'ÉQUIPE - RECOUVREMENT - SÉCURITÉ ROUTIÈRE - TRANSPORT - IDEAL - ITIL - MICROSOFT","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement129" = Table.ReplaceValue(#"ValueReplacement128","AUDIT - COMPLIANCE - COMPTABILITÉ - CONTINUOUS IMPROVEMENT - CORPORATE FINANCE - FINANCE - FINANCIAL ANALYSIS - FINANCIAL MANAGEMENT - FORECASTING - GESTION - LEADERSHIP - MAINTENANCE - MANAGEMENT - PRODUCTION - QUALITÉ - RISK MANAGEMENT","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
-				    #"ValueReplacement130" = Table.ReplaceValue(#"ValueReplacement129","AUDIT - AUDIT INTERNE - COMPTABILITÉ - FINANCE - FORMATION - GESTION - GESTION ADMINISTRATIVE","AUDIT - COMPTABILITÉ - FINANCE - FINANCEMENT - FISCALITÉ - GESTION - GESTION DE LA TRÉSORERIE - GESTION FINANCIÈRE - PLANIFICATION FINANCIÈRE - STRATÉGIE FINANCIÈRE - TECHNIQUES DE GESTION - TRÉSORERIE",Replacer.ReplaceText,{"compétence"}),
-				    #"Année insérée" = Table.AddColumn(ValueReplacement130, "Année", each Date.Year([date de publication]), Int64.Type),
-				    #"Colonnes permutées" = Table.ReorderColumns(#"Année insérée",{"poste", "localité", "organisation", "date de publication", "Année", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"}),
-				    #"Mois inséré" = Table.AddColumn(#"Colonnes permutées", "Mois", each Date.Month([date de publication]), Int64.Type),
-				    #"Colonnes permutées1" = Table.ReorderColumns(#"Mois inséré",{"poste", "localité", "organisation", "date de publication", "Année", "Mois", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"})
-				
+				    #"Année insérée" = Table.AddColumn(#"Type modifié", "Année", each Date.Year([date de publication]), Int64.Type),
+				    #"Mois inséré" = Table.AddColumn(#"Année insérée", "Mois", each Date.Month([date de publication]), Int64.Type),
+				    #"Colonnes permutées" = Table.ReorderColumns(#"Mois inséré",{"poste", "localité", "organisation", "date de publication", "Année", "Mois", "études", "expérience", "compétence", "contrat", "region", "salaire", "source", "lien offre"})
 				in
-				    #"Colonnes permutées1"
-				```
+				    #"Colonnes permutées"
 
 	annotation PBI_ResultType = Table
 

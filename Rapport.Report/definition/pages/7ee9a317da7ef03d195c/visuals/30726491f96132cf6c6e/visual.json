@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "30726491f96132cf6c6e",
   "position": {
-    "x": 24.285714285714288,
-    "y": 172.85714285714286,
-    "z": 6,
-    "height": 334.28571428571433,
-    "width": 620,
-    "tabOrder": 6
+    "x": 12.5,
+    "y": 267.1875,
+    "z": 5000,
+    "height": 226.5625,
+    "width": 628.125,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "merged_cm_jobs.poste",
-              "nativeQueryRef": "poste",
-              "active": true
+              "nativeQueryRef": "Poste",
+              "active": true,
+              "displayName": "Poste"
             }
           ]
         },
@@ -46,7 +47,8 @@
                 }
               },
               "queryRef": "merged_cm_jobs.Nombre de postes",
-              "nativeQueryRef": "Nombre de postes"
+              "nativeQueryRef": "Nombre d'offres",
+              "displayName": "Nombre d'offres"
             }
           ]
         }
@@ -131,7 +133,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Les 10 métiers les plus demandés au Cameroun'"
+                  "Value": "'Les 5 métiers les plus demandés au Cameroun'"
                 }
               }
             },

@@ -1,0 +1,365 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "f07d63de71760b03c5c4",
+  "position": {
+    "x": 158.33333333333334,
+    "y": 251.66666666666669,
+    "z": 3000,
+    "height": 421.66666666666669,
+    "width": 1018.3333333333334,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "merged_cm_jobs"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date de publication"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Année"
+                }
+              },
+              "queryRef": "merged_cm_jobs.date de publication.Variation.Hiérarchie de dates.Année",
+              "nativeQueryRef": "date de publication Année",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "merged_cm_jobs"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date de publication"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Trimestre"
+                }
+              },
+              "queryRef": "merged_cm_jobs.date de publication.Variation.Hiérarchie de dates.Trimestre",
+              "nativeQueryRef": "date de publication Trimestre",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "merged_cm_jobs"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date de publication"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Mois"
+                }
+              },
+              "queryRef": "merged_cm_jobs.date de publication.Variation.Hiérarchie de dates.Mois",
+              "nativeQueryRef": "date de publication Mois",
+              "active": true,
+              "format": "G"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "merged_cm_jobs"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date de publication"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Jour"
+                }
+              },
+              "queryRef": "merged_cm_jobs.date de publication.Variation.Hiérarchie de dates.Jour",
+              "nativeQueryRef": "date de publication Jour",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "merged_cm_jobs"
+                    }
+                  },
+                  "Property": "Nombre de postes"
+                }
+              },
+              "queryRef": "merged_cm_jobs.Nombre de postes",
+              "nativeQueryRef": "Nombre de postes"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "seriesLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "areaShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "invertAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mois'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "forecast": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Prévision 1'"
+                }
+              }
+            },
+            "transform": {
+              "algorithm": "Forecast",
+              "parameters": [
+                {
+                  "Literal": {
+                    "Value": "7D"
+                  },
+                  "Name": "Unit"
+                },
+                {
+                  "Literal": {
+                    "Value": "10D"
+                  },
+                  "Name": "ForecastLength"
+                },
+                {
+                  "Literal": {
+                    "Value": "0D"
+                  },
+                  "Name": "IgnoreLast"
+                },
+                {
+                  "Literal": {
+                    "Value": "0.95D"
+                  },
+                  "Name": "ConfidenceLevel"
+                }
+              ]
+            }
+          },
+          "selector": {
+            "metadata": "merged_cm_jobs.Nombre de postes",
+            "id": "1"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E6E6E6'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E6E6E6'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Prédiction sur la demande dans les mois à venir'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Comic Sans MS'''"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

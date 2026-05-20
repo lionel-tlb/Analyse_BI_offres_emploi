@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "c53543f62263a1d567b6",
   "position": {
-    "x": 12.5,
-    "y": 517.1875,
-    "z": 6007,
-    "height": 189.0625,
-    "width": 628.125,
-    "tabOrder": 6007
+    "x": 12.113639304264245,
+    "y": 517.85808025729648,
+    "z": 12000,
+    "height": 189.27561412912883,
+    "width": 628.39503890870776,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "donutChart",
@@ -71,6 +71,300 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#118dff'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'CDI/Temps plein'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E66C37'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Stage'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13F49E'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Freelance/Consultance'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D50502'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'CDD/Temporaire'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 5,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Alternance'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Non précisé'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 5,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "merged_cm_jobs"
+                          }
+                        },
+                        "Property": "contrat"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Intérim'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "border": [

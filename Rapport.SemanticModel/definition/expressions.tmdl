@@ -30,3 +30,36 @@ expression fn_normalize_job_1 = ```
 
 	annotation PBI_ResultType = Function
 
+expression 'CheminProjet (2)' = "C:\Users\TLB\BI_WORK\Analyse_BI_offres_emploi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 51bd2d3f-5e1f-4d52-90c2-1e5929d590f0
+
+	annotation PBI_ResultType = Text
+
+expression 'fn_normalize_job_1 (2)' = ```
+		let
+		    Source = (current_value as any, container_values as list, output_value as text, and_condition as logical) =>
+		let
+		    value = if current_value = null then "" else Text.From(current_value),
+		
+		    TransformFunction = List.Transform(
+		                        container_values,
+		                        each Text.Contains(value, _, Comparer.OrdinalIgnoreCase)
+		                    ),
+		                    
+		    Check = if and_condition then
+		                List.AllTrue(TransformFunction)
+		            else
+		                List.AnyTrue(TransformFunction),
+		
+		    Result = if Check then output_value else value
+		in
+		    Result
+		in
+		    Source
+		```
+	lineageTag: e2423a6c-6b54-460d-bbfd-e2796bdd8853
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

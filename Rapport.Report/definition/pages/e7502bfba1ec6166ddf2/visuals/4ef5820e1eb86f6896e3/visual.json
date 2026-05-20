@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "4ef5820e1eb86f6896e3",
   "position": {
-    "x": 12.5,
-    "y": 89.0625,
-    "z": 2000,
-    "height": 598.4375,
-    "width": 729.6875,
-    "tabOrder": 2000
+    "x": 13.333333333333334,
+    "y": 88.333333333333343,
+    "z": 1000,
+    "height": 305,
+    "width": 735,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "merged_cm_jobs.organisation",
-              "nativeQueryRef": "organisation",
-              "active": true
+              "nativeQueryRef": "Organisation",
+              "active": true,
+              "displayName": "Organisation"
             }
           ]
         },
@@ -153,6 +154,13 @@
                       "Percent": 0.4
                     }
                   }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }

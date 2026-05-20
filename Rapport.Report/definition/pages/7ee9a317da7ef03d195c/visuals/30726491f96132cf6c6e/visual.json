@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "merged_cm_jobs.poste",
-              "nativeQueryRef": "poste",
-              "active": true
+              "nativeQueryRef": "Poste",
+              "active": true,
+              "displayName": "Poste"
             }
           ]
         },
@@ -46,7 +47,8 @@
                 }
               },
               "queryRef": "merged_cm_jobs.Nombre de postes",
-              "nativeQueryRef": "Nombre de postes"
+              "nativeQueryRef": "Nombre d'offres",
+              "displayName": "Nombre d'offres"
             }
           ]
         }

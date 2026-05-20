@@ -79,7 +79,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Vue générale'"
+                  "Value": "'Prédiction'"
                 }
               }
             },
@@ -295,7 +295,7 @@
             "navigationSection": {
               "expr": {
                 "Literal": {
-                  "Value": "'e7502bfba1ec6166ddf2'"
+                  "Value": "'7e491c76a94f080685a1'"
                 }
               }
             }

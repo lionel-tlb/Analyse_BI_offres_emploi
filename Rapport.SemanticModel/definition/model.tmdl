@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["CheminProjet","merged_cm_jobs","fn_normalize_job_1","D_poste"]
+annotation PBI_QueryOrder = ["CheminProjet","merged_cm_jobs","fn_normalize_job_1","D_poste","CheminProjet (2)","merged_cm_jobs_v1","fn_normalize_job_1 (2)"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -16,6 +16,8 @@ ref table merged_cm_jobs
 ref table DateTableTemplate_99342bfa-4bee-4a85-8a34-2f9d47e48337
 ref table LocalDateTable_179d40f8-346b-420c-9177-36a8c941aa0b
 ref table D_poste
+ref table merged_cm_jobs_v1
+ref table LocalDateTable_689be208-c277-4734-9f8d-a9e6224a675d
 
 ref cultureInfo fr-FR
 

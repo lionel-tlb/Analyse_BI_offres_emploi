@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "0c0da2b7934a075633e9",
   "position": {
-    "x": 678.125,
-    "y": 267.1875,
+    "x": 678.36380103879776,
+    "y": 266.50006469381339,
     "z": 0,
-    "height": 451.5625,
-    "width": 590.625,
+    "height": 440.63362969261192,
+    "width": 590.539916082882,
     "tabOrder": 0
   },
   "visual": {
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "merged_cm_jobs.region",
-              "nativeQueryRef": "region",
-              "active": true
+              "nativeQueryRef": "Région",
+              "active": true,
+              "displayName": "Région"
             }
           ]
         },
@@ -46,7 +47,8 @@
                 }
               },
               "queryRef": "merged_cm_jobs.Postes/Region",
-              "nativeQueryRef": "Postes/Region"
+              "nativeQueryRef": "Nombre d'offres par région",
+              "displayName": "Nombre d'offres par région"
             }
           ]
         }
